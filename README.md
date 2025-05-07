@@ -5,7 +5,7 @@ CodeVul+ is a deep learning framework for code vulnerability detection that leve
 ## Installation
 
 Clone the repository.<br>
-git clone https://github.com/your-username/CodeVul+.git
+git clone https://github.com/your-username/CodeVul+.git.
 cd CodeVul+
 
 Install dependencies
