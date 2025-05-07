@@ -22,7 +22,7 @@ Run both training and inference with the sample dataset.<br>
 
 Clone the repository.<br>
 <pre lang="markdown"> git clone https://github.com/FAST-cyber-Lab/CodeVulplus.git<br> </pre>
-<pre lang="markdown"> cd CodeVul+ </pre>
+<pre lang="markdown"> cd CodeVulplus </pre>
 
 Install dependencies.<br>
 pip install -r requirements.txt
