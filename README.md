@@ -7,10 +7,14 @@ CodeVul+ is a deep learning framework for code vulnerability detection that leve
 CodeVul+ expects datasets in CSV format with a column named **`functionSource`** containing the code snippets to analyze. The sample dataset included in the repository demonstrates the expected format. 
 
 # Quick Start with Sample Dataset.<br>
-The repository includes a sample dataset for demonstration:
-Run both training and inference with the sample dataset.
-Run only training python 
-<pre lang="markdown"> python sample_run.py # sample_run.py --train # Run only inference python sample_run.py --infer ``` </pre>
+Run both training and inference with the sample dataset.<br>
+<pre lang="markdown"> python sample_run.py </pre>
+
+# Run only training.<br>
+<pre lang="markdown"> sample_run.py --train </pre>
+
+# Run only inference 
+<pre lang="markdown"> python sample_run.py --infer ``` </pre>
 
 
 
