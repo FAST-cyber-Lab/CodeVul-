@@ -10,10 +10,10 @@ CodeVul+ expects datasets in CSV format with a column named **`functionSource`**
 
 Clone the repository.<br>
 <pre lang="markdown">git clone https://github.com/FAST-cyber-Lab/CodeVulplus.git<br> </pre>
-<pre lang="markdown">cd CodeVulplus </pre>
+
 
 Install dependencies.<br>
-<pre lang="markdown">pip install -r requirements.txt</pre>
+<pre lang="markdown">pip install -r ./CodeVulplus/requirements.txt</pre>
 
 
 
