@@ -21,8 +21,8 @@ Run both training and inference with the sample dataset.<br>
 ## Installation
 
 Clone the repository.<br>
-git clone https://github.com/your-username/CodeVul+.git.<br>
-cd CodeVul+
+<pre lang="markdown"> git clone https://github.com/your-username/CodeVul+.git.<br> </pre>
+<pre lang="markdown"> cd CodeVul+ </pre>
 
 Install dependencies.<br>
 pip install -r requirements.txt
