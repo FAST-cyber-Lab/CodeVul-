@@ -10,3 +10,10 @@ cd CodeVul+
 
 Install dependencies.<br>
 pip install -r requirements.txt
+
+
+# Training.<br>
+python train.py --dataset path/to/dataset.csv --save_path models/codevul_plus.pt --batch_size 8 --epochs 3 --learning_rate 1e-4
+
+# Inference.<br>
+python infer.py --dataset path/to/test_dataset.csv --model_path models/codevul_plus.pt --batch_size 8
