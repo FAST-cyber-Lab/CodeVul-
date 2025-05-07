@@ -16,5 +16,5 @@ pip install -r requirements.txt
 <pre lang="markdown"> python train.py \ --dataset path/to/dataset.csv \ --save_path models/codevul_plus.pt \ --batch_size 8 \ --epochs 3 \ --learning_rate 1e-4  </pre>
 
 # Inference.<br>
-<pre lang="markdown"> ```bash python infer.py \ --dataset path/to/test_dataset.csv \ --model_path models/codevul_plus.pt \ --batch_size 8 ``` </pre>
+<pre lang="markdown"> python infer.py \ --dataset path/to/test_dataset.csv \ --model_path models/codevul_plus.pt \ --batch_size 8 </pre>
 
