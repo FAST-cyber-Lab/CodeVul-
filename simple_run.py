@@ -34,8 +34,8 @@ def main():
     embeddings_path = os.path.join(root_dir, 'data', 'sample_embeddings.csv')
 
     
-    train_script_path = os.path.join(root_dir, 'CodeVulplus', 'train.py')
-    infer_script_path = os.path.join(root_dir, 'CodeVulplus', 'infer.py')
+    train_script_path = os.path.join(root_dir, 'train.py')
+    infer_script_path = os.path.join(root_dir, 'infer.py')
     
     parser = argparse.ArgumentParser(description="Run CodeVul+ sample workflow")
 
