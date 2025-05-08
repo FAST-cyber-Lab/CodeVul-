@@ -29,7 +29,7 @@ def main():
 
     root_dir = os.path.dirname(os.path.abspath(__file__))
     
-    dataset_path = os.path.join(root_dir, 'data', 'sample_dataset.csv')
+    dataset_path = os.path.join(root_dir, 'data', 'mini_sample.csv')
     model_path = os.path.join(root_dir, 'pretrained', 'pretrained.pt')
     embeddings_path = os.path.join(root_dir, 'data', 'sample_embeddings.csv')
 
