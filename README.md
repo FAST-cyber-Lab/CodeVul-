@@ -30,9 +30,9 @@ Run both training and inference with the sample dataset.<br>
 
 
 # Training.<br>
-<pre lang="markdown">!python root/CodeVulplus/train.py --dataset root/CodeVulplus/data/sample_dataset.csv --save_path models/codevul_plus_colab.pt --batch_size 4 --epochs 2
+<pre lang="markdown">!python root/CodeVulplus/train.py --dataset root/CodeVulplus/data/sample_dataset.csv --save_path root/CodeVulplus/pretrained/pretrained.pt --batch_size 4 --epochs 2
   </pre>
 
 # Inference.<br>
-<pre lang="markdown"> python infer.py \ --dataset path/to/test_dataset.csv \ --model_path models/codevul_plus.pt \ --batch_size 8 </pre>
+<pre lang="markdown"> !python root/CodeVulplus/infer.py --dataset root/sample_dataset.csv --model_path root/CodeVulplus/pretrained/pretrained.pt --output infered_embeddings.csv </pre>
 
