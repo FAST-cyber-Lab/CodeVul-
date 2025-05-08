@@ -32,10 +32,14 @@ def main():
     dataset_path = os.path.join(root_dir, 'data', 'sample_dataset.csv')
     model_path = os.path.join(root_dir, 'pretrained', 'pretrained.pt')
     embeddings_path = os.path.join(root_dir, 'data', 'sample_embeddings.csv')
+
+    
+    train_script_path = os.path.join(root_dir, 'CodeVulplus', 'train.py')
+    infer_script_path = os.path.join(root_dir, 'CodeVulplus', 'infer.py')
     
     parser = argparse.ArgumentParser(description="Run CodeVul+ sample workflow")
-    parser.add_argument('--train', action='store_true', help='Train model on sample dataset')
-    parser.add_argument('--infer', action='store_true', help='Generate embeddings from trained model')
+    parser.add_argument('--train', default=train_script_path, help='Fine-tuned model on sample dataset')
+    parser.add_argument('--infer', default=infer_script_path, help='Generate embeddings from fpretrained model')
     args = parser.parse_args()
 
     if not preprocess_sample_dataset(dataset_path):
