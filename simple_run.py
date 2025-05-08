@@ -27,9 +27,11 @@ def preprocess_sample_dataset(dataset_path):
 
 def main():
 
-    dataset_path = os.path.join('data', 'sample_dataset.csv')
-    model_path = os.path.join('pretrained', 'pretrained.pt')
-    embeddings_path = os.path.join('data', 'sample_embeddings.csv')
+    root_dir = os.path.dirname(os.path.abspath(__file__))
+    
+    dataset_path = os.path.join(root_dir, 'data', 'sample_dataset.csv')
+    model_path = os.path.join(root_dir, 'pretrained', 'pretrained.pt')
+    embeddings_path = os.path.join(root_dir, 'data', 'sample_embeddings.csv')
     
     parser = argparse.ArgumentParser(description="Run CodeVul+ sample workflow")
     parser.add_argument('--train', action='store_true', help='Train model on sample dataset')
