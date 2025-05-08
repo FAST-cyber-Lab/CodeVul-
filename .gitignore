@@ -1,4 +1,4 @@
-# Python
+
 __pycache__/
 *.py[cod]
 *$py.class
@@ -20,30 +20,23 @@ var/
 .installed.cfg
 *.egg
 
-# Virtual environment
 venv/
 ENV/
 env/
 
-# PyCharm
 .idea/
-
-# VS Code
 .vscode/
 
-# Models (keep sample models)
+
 models/*.pt
 !models/codevul_plus_sample.pt
 !models/__init__.py
 
-# Generated embeddings
 data/*.csv
 !data/sample_dataset.csv
 
-# Logs
 *.log
 
-# OS specific
 .DS_Store
 .DS_Store?
 ._*
