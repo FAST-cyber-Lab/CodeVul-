@@ -38,8 +38,17 @@ def main():
     infer_script_path = os.path.join(root_dir, 'CodeVulplus', 'infer.py')
     
     parser = argparse.ArgumentParser(description="Run CodeVul+ sample workflow")
-    parser.add_argument('--train', default=train_script_path, help='Fine-tuned model on sample dataset')
-    parser.add_argument('--infer', default=infer_script_path, help='Generate embeddings from fpretrained model')
+
+    
+    base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    code_vulplus_path = os.path.join(base_path, 'CodeVulplus')
+
+    train_path = os.path.join(code_vulplus_path, 'train.py')
+    infer_path = os.path.join(code_vulplus_path, 'infer.py')
+    
+    parser.add_argument('--train', action='store_true', help='Fine-tuned model on sample dataset') 
+    parser.add_argument('--infer', action='store_true', help='Generate embeddings from pretrained model')
+
     args = parser.parse_args()
 
     if not preprocess_sample_dataset(dataset_path):
