@@ -16,7 +16,7 @@ import os
 from models import HybridModel, build_dynamic_graph
 from utils import CodeEmbedder
 
-def load_trained_embeddings(dataset_path, model_path="models/codevul_plus.pt", batch_size=8, output_path="embeddings.csv"):
+def load_trained_embeddings(dataset_path, model_path="pretrained/pretrained.pt", batch_size=8, output_path="embeddings.csv"):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"Using device: {device}")
 
@@ -57,7 +57,7 @@ def load_trained_embeddings(dataset_path, model_path="models/codevul_plus.pt", b
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Generate embeddings using trained CodeVul+ model")
     parser.add_argument("--dataset", type=str, required=True, help="Path to dataset CSV file")
-    parser.add_argument("--model_path", type=str, default="models/codevul_plus.pt", help="Path to trained model")
+    parser.add_argument("--model_path", type=str, default="pretrained/pretrained.pt", help="Path to trained model")
     parser.add_argument("--batch_size", type=int, default=8, help="Batch size for inference")
     parser.add_argument("--output", type=str, default="embeddings.csv", help="Path to save embeddings")
 
