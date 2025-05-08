@@ -51,13 +51,14 @@ def main():
 
     args = parser.parse_args()
 
+
     if not preprocess_sample_dataset(dataset_path):
         return
     
     if args.train or (not args.train and not args.infer):
         print("=== Training CodeVul+ model on sample dataset ===")
         print("Note: Code cleaning will be automatically applied to all samples")
-        train_cmd = f"python train.py --dataset {dataset_path} --save_path {model_path} --batch_size 4 --epochs 2"
+        train_cmd = f"python {train_script_path} --dataset {dataset_path} --save_path {model_path} --batch_size 4 --epochs 2"
         print(f"Running: {train_cmd}")
         os.system(train_cmd)
     
