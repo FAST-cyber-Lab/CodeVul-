@@ -5,11 +5,7 @@ import numpy as np
 import pandas as pd
 import argparse
 import os
-import sys
 from sklearn.model_selection import train_test_split
-
-
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from models import HybridModel, build_dynamic_graph
 from utils import CodeEmbedder
@@ -17,11 +13,6 @@ from utils import CodeEmbedder
 def train_and_evaluate(dataset_path, save_path="models/codevul_plus.pt", batch_size=8, epochs=3, learning_rate=1e-4, val_split=0.2):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"Using device: {device}")
-    
-
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    dataset_path = os.path.join(script_dir, dataset_path)
-    save_path = os.path.join(script_dir, save_path)
     
 
     dataset = pd.read_csv(dataset_path)
@@ -32,6 +23,7 @@ def train_and_evaluate(dataset_path, save_path="models/codevul_plus.pt", batch_s
     train_codes = train_data['functionSource'].tolist()
     val_codes = val_data['functionSource'].tolist()
 
+
     embedder = CodeEmbedder(device=device)
     
 
@@ -40,13 +32,13 @@ def train_and_evaluate(dataset_path, save_path="models/codevul_plus.pt", batch_s
     optimal_max_length = min(optimal_max_length, embedder.tokenizer.model_max_length)
     print(f"Optimal max_length: {optimal_max_length}")
 
+
     model_hybrid = HybridModel(768, 512, 768).to(device)
     optimizer = optim.Adam(model_hybrid.parameters(), lr=learning_rate)
     loss_fn = nn.MSELoss()
 
 
     os.makedirs(os.path.dirname(save_path), exist_ok=True)
-
 
     for epoch in range(epochs):
 
@@ -70,6 +62,7 @@ def train_and_evaluate(dataset_path, save_path="models/codevul_plus.pt", batch_s
         
         avg_train_loss = total_train_loss / (len(train_codes) / batch_size)
         
+
         model_hybrid.eval()
         total_val_loss = 0.0
         
@@ -89,7 +82,7 @@ def train_and_evaluate(dataset_path, save_path="models/codevul_plus.pt", batch_s
         avg_val_loss = total_val_loss / (len(val_codes) / batch_size)
         
         print(f"Epoch {epoch+1}, Train Loss: {avg_train_loss}, Val Loss: {avg_val_loss}")
-    
+
     torch.save(model_hybrid.state_dict(), save_path)
     print(f"Model saved to {save_path}")
 
