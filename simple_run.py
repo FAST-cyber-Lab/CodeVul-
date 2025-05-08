@@ -65,7 +65,7 @@ def main():
     if args.infer or (not args.train and not args.infer):
         print("\n=== Generating embeddings using trained model ===")
         print("Note: Code cleaning will be automatically applied to all samples")
-        infer_cmd = f"python infer.py --dataset {dataset_path} --model_path {model_path} --output {embeddings_path}"
+        infer_cmd = f"python {infer_script_path} --dataset {dataset_path} --model_path {model_path} --output {embeddings_path}"
         print(f"Running: {infer_cmd}")
         os.system(infer_cmd)
         
