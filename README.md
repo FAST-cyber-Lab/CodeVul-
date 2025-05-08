@@ -22,7 +22,7 @@ Run both training and inference with the sample dataset.<br>
 <pre lang="markdown"> python sample_run.py </pre>
 
 ### Run only training.<br>
-<pre lang="markdown"> sample_run.py --train </pre>
+<pre lang="markdown">!python sample_run.py --train </pre>
 
 ### Run only inference 
 <pre lang="markdown"> python sample_run.py --infer </pre>
