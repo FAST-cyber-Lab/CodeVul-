@@ -19,7 +19,7 @@ Install dependencies.<br>
 
 ### Quick Start with Sample Dataset.<br>
 Run both training and inference with the sample dataset.<br>
-<pre lang="markdown"> python sample_run.py </pre>
+<pre lang="markdown">!python sample_run.py </pre>
 
 ### Run only training.<br>
 <pre lang="markdown">!python sample_run.py --train </pre>
