@@ -30,7 +30,7 @@ Run both training and inference with the sample dataset.<br>
 
 
 # Training.<br>
-<pre lang="markdown">!python root/CodeVulplus/train.py --dataset root/CodeVulplus/data/sample_dataset.csv --save_path root/CodeVulplus/pretrained/pretrained.pt --batch_size 4 --epochs 2
+<pre lang="markdown">!python root/CodeVulplus/train.py --dataset root/CodeVulplus/data/sample_dataset.csv --save_path root/new_finetuned.pt --batch_size 4 --epochs 2
   </pre>
 
 # Inference.<br>
