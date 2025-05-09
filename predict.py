@@ -7,7 +7,7 @@ from utils.classifier import predict_vulnerabilities
 def main():
     parser = argparse.ArgumentParser(description="Predict code vulnerabilities using CodeVul+")
     parser.add_argument("--embeddings", type=str, required=True, help="Path to embeddings CSV file")
-    parser.add_argument("--output", type=str, default="vulnerability_predictions.csv", help="Path to save prediction results")
+    #parser.add_argument("--output", type=str, default="vulnerability_predictions.csv", help="Path to save prediction results")
     parser.add_argument("--models_dir", type=str, default="saved_models/saved_models", help="Directory containing the saved models")
     parser.add_argument("--download", action="store_true", help="Download models before prediction")
     parser.add_argument("--file_id", type=str, default="1dQZOOY80DxYCtUZz962yQn-5JyuZvtNP", help="Google Drive file ID for models")
