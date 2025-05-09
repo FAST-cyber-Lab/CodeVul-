@@ -38,5 +38,5 @@ Run both training and inference with the sample dataset.<br>
 
 
 # Make prediction with your vectorized dataset.<br>
-!python root/CodeVulplus/predict.py --embeddings root/vectorized_dataset.csv --download
+<pre lang="markdown"> !python root/CodeVulplus/predict.py --embeddings root/vectorized_dataset.csv --download</pre>
 
