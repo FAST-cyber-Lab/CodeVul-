@@ -1,5 +1,6 @@
 """
 Vulnerability classifier using joblib for model loading.
+Handles multi-class classification with 5 target classes (0-4).
 """
 import os
 import joblib
@@ -58,7 +59,7 @@ def predict_vulnerabilities(embeddings_path, models_dir="saved_models/saved_mode
         models_dir: Directory containing the saved models
         output_path: Path to save prediction results (optional)
     Returns:
-        DataFrame with original embeddings and prediction results
+        DataFrame with original embeddings and prediction results with classes 0-4
     """
     # Load embeddings
     print(f"Loading embeddings from {embeddings_path}")
@@ -78,7 +79,10 @@ def predict_vulnerabilities(embeddings_path, models_dir="saved_models/saved_mode
     # Create results dataframe
     results_df = embeddings_df.copy()
     results_df['prediction'] = predictions
-    results_df['vulnerability_probability'] = probabilities[:, 1]  # Assuming binary classification
+    
+    # Add probability for each class (0-4)
+    for i in range(5):  # 5 classes: 0-4
+        results_df[f'probability_class_{i}'] = probabilities[:, i]
     
     # Save results if output path is provided
     if output_path:
