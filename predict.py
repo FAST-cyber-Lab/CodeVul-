@@ -23,8 +23,8 @@ def main():
     
     results = predict_vulnerabilities(
         embeddings_path=args.embeddings,
-        models_dir=args.models_dir,
-        output_path=args.output
+        models_dir=args.models_dir
+        #output_path=args.output
     )
     
     if results is not None:
