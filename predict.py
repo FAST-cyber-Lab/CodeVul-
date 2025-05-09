@@ -57,7 +57,7 @@ def main():
             if class_idx not in prediction_counts.index:
                 print(f"{class_name}: 0 samples (0.00%)")
         
-        print(f"\nDetailed results saved to {args.output}")
+        #print(f"\nDetailed results saved to {args.output}")
 
 if __name__ == "__main__":
     main()
