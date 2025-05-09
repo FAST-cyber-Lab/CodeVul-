@@ -20,7 +20,7 @@ def load_saved_models(models_dir="saved_models/saved_models"):
         'xgb': 'xgb_model.pkl',
         'extra_tree': 'extra_tree_model.pkl',
         'log_reg': 'log_reg_model.pkl',
-        'nn': 'nn_model.pkl'
+        'nn': 'stacked_nn_model.pkl'
     }
 
     for model_name, file_name in model_files.items():
