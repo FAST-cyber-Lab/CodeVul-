@@ -12,3 +12,4 @@ tqdm>=4.62.0
 setuptools>=58.0.0
 typing-extensions>=3.10.0
 tokenizers>=0.10.3
+gdown>=4.6.0
