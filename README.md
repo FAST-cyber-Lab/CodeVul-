@@ -36,3 +36,7 @@ Run both training and inference with the sample dataset.<br>
 # Inference.<br>
 <pre lang="markdown"> !python root/CodeVulplus/infer.py --dataset root/sample_dataset.csv --model_path root/CodeVulplus/pretrained/pretrained.pt --output infered_embeddings.csv </pre>
 
+
+# Make prediction with your vectorized dataset.<br>
+!python root/CodeVulplus/predict.py --embeddings root/vectorized_dataset.csv --download
+
