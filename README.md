@@ -14,7 +14,7 @@ Clone the repository.<br>
 ### Create a virtual environment (recommended)
 <pre lang="markdown">!python -m venv codevul_env </pre>
 source codevul_env/bin/activate  <br>
-# On Windows: codevul_env\Scripts\activate
+On Windows: codevul_env\Scripts\activate
 
 # Install dependencies
 pip install -r requirements.txt
