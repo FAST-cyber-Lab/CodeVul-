@@ -1,10 +1,11 @@
 # CodeVul+
 
-CodeVul+ is a deep learning framework for code vulnerability detection in source code at function-level granularity that leverages GCN reasoning and transformer-based models. The architecture combines GraphCodeBERT embeddings with a dynamic graph convolutional network to capture both syntactic and semantic relationships in code.
+CodeVul+ is a deep learning framework for code vulnerability detection at function-level granularity that leverages GCN reasoning and transformer-based models. The architecture combines GraphCodeBERT embeddings with a dynamic graph convolutional network to capture both syntactic and semantic relationships in code.
 
 
 # Dataset Format.<br>
-CodeVul+ expects datasets in CSV format with a column named **`functionSource`** containing the code snippets to analyze. The sample dataset included in the repository demonstrates the expected format. 
+CodeVul+ expects datasets in CSV format with a column named **`functionSource`** containing the code snippets to analyze. The sample dataset included in the repository **`data\sample_dataset.csv`** demonstrates the expected format. <br>
+NOTE: Replace **`\root\`** in the command below with the absolute path to your working environment or project directory as appropriate for your setup.
 
 ## Installation
 
