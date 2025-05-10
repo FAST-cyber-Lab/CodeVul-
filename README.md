@@ -26,7 +26,7 @@ On Windows: codevul_env\Scripts\activate
 Run both training and inference with the sample dataset.<br>
 <pre lang="markdown">!python sample_run.py </pre>
 
-### Run only Fine-tuning.<br>
+### Run For Fine-tuning.<br>
 <pre lang="markdown">!python sample_run.py --train </pre>
 
 ### Run only inference 
