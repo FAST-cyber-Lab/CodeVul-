@@ -35,7 +35,7 @@ Run both training and inference with the sample dataset.<br>
 
 
 
-# Training.<br>
+# Fine-tuning for Downstream Task.<br>
 <pre lang="markdown">!python root/CodeVulplus/train.py --dataset root/CodeVulplus/data/sample_dataset.csv --save_path root/new_finetuned.pt --batch_size 4 --epochs 2
   </pre>
 
