@@ -11,6 +11,12 @@ CodeVul+ expects datasets in CSV format with a column named **`functionSource`**
 Clone the repository.<br>
 <pre lang="markdown">git clone https://github.com/FAST-cyber-Lab/CodeVulplus.git<br> </pre>
 
+### Create a virtual environment (recommended)
+<pre lang="markdown">!python -m venv codevul_env </pre>
+source codevul_env/bin/activate  # On Windows: codevul_env\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
 
 Install dependencies.<br>
 <pre lang="markdown">pip install -r ./CodeVulplus/requirements.txt</pre>
