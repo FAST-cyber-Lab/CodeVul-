@@ -16,10 +16,8 @@ Clone the repository.<br>
 source codevul_env/bin/activate  <br>
 On Windows: codevul_env\Scripts\activate
 
-# Install dependencies
-pip install -r requirements.txt
 
-Install dependencies.<br>
+# Install dependencies.<br>
 <pre lang="markdown">pip install -r ./CodeVulplus/requirements.txt</pre>
 
 
