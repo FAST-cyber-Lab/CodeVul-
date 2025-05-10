@@ -21,7 +21,7 @@ Install dependencies.<br>
 Run both training and inference with the sample dataset.<br>
 <pre lang="markdown">!python sample_run.py </pre>
 
-### Run only training.<br>
+### Run only Fine-tuning.<br>
 <pre lang="markdown">!python sample_run.py --train </pre>
 
 ### Run only inference 
