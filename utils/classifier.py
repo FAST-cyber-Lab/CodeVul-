@@ -19,7 +19,7 @@ def load_saved_models(models_dir="saved_models/saved_models"):
         model_path = os.path.join(models_dir, file_name)
         if os.path.exists(model_path):
             models[model_name] = joblib.load(model_path)
-            print(f"Loaded {model_name} model")
+            
         else:
             print(f"Warning: Model file {file_name} not found")
     
