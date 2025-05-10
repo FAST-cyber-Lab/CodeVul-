@@ -1,6 +1,6 @@
 # CodeVul+
 
-CodeVul+ is a deep learning framework for code vulnerability detection that leverages Graph Neural Networks and transformer-based models. The architecture combines GraphCodeBERT embeddings with a dynamic graph convolutional network to capture both syntactic and semantic relationships in code.
+CodeVul+ is a deep learning framework for code vulnerability detection in source code at function-level granularity that leverages GCN reasoning and transformer-based models. The architecture combines GraphCodeBERT embeddings with a dynamic graph convolutional network to capture both syntactic and semantic relationships in code.
 
 
 # Dataset Format.<br>
