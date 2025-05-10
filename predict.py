@@ -28,7 +28,7 @@ def main():
     )
     
     if results is not None:
-        # Define class names mapping
+      
         class_names = {
             0: 'CWE-119',
             1: 'CWE-120',
@@ -37,14 +37,14 @@ def main():
             4: 'CWE-other'
         }
         
-        # Count predictions for each class
+
         prediction_counts = results['prediction'].value_counts().sort_index()
         total_count = len(results)
         
         print(f"\nPrediction Summary:")
         print(f"Total samples: {total_count}")
         
-        # Display counts and percentages for each vulnerability class
+
         print("\nVulnerability Class Distribution:")
         for class_idx, count in prediction_counts.items():
             if class_idx in class_names:
@@ -52,12 +52,12 @@ def main():
                 percentage = (count / total_count) * 100
                 print(f"{class_name}: {count} samples ({percentage:.2f}%)")
         
-        # Check for missing classes in the prediction results
+
         for class_idx, class_name in class_names.items():
             if class_idx not in prediction_counts.index:
                 print(f"{class_name}: 0 samples (0.00%)")
         
-        #print(f"\nDetailed results saved to {args.output}")
+
 
 if __name__ == "__main__":
     main()
