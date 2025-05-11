@@ -1,0 +1,29 @@
+Dataset,TF-IDF Similarity
+big_vultest.csv vs devign.csv,0.566995433
+big_vultest.csv vs diverse_vultest.csv,0.834258543
+big_vultest.csv vs djuliet_vultest.csv,0.149944642
+big_vultest.csv vs mix_test_vultest.csv,0.799223392
+big_vultest.csv vs Reveal_vultest.csv,0.635025248
+big_vultest.csv vs vul_fun-vulllm new'.csv,0.663450613
+big_vultest.csv vs train_label_dataset.csv,0.662787956
+devign.csv vs diverse_vultest.csv,0.652139821
+devign.csv vs djuliet_vultest.csv,0.159031379
+devign.csv vs mix_test_vultest.csv,0.82471787
+devign.csv vs Reveal_vultest.csv,0.536726092
+devign.csv vs vul_fun-vulllm new'.csv,0.612671724
+devign.csv vs train_label_dataset.csv,0.629742893
+diverse_vultest.csv vs djuliet_vultest.csv,0.177230964
+diverse_vultest.csv vs mix_test_vultest.csv,0.90063102
+diverse_vultest.csv vs Reveal_vultest.csv,0.688051631
+diverse_vultest.csv vs vul_fun-vulllm new'.csv,0.78927424
+diverse_vultest.csv vs train_label_dataset.csv,0.776475779
+djuliet_vultest.csv vs mix_test_vultest.csv,0.189026749
+djuliet_vultest.csv vs Reveal_vultest.csv,0.183163582
+djuliet_vultest.csv vs vul_fun-vulllm new'.csv,0.133783346
+djuliet_vultest.csv vs train_label_dataset.csv,0.176590165
+mix_test_vultest.csv vs Reveal_vultest.csv,0.716885338
+mix_test_vultest.csv vs vul_fun-vulllm new'.csv,0.768927295
+mix_test_vultest.csv vs train_label_dataset.csv,0.751061158
+Reveal_vultest.csv vs vul_fun-vulllm new'.csv,0.542756991
+Reveal_vultest.csv vs train_label_dataset.csv,0.561757442
+vul_fun-vulllm new'.csv vs train_label_dataset.csv,0.733320657
