@@ -1,0 +1,61 @@
+task_id,variant,language,description,code,label
+task_java_1,v1,Java,Command injection via Runtime.exec,"public void runCommand(String cmd) throws Exception {
+    Runtime.getRuntime().exec(cmd);
+}",vulnerable
+task_java_1,v2,Java,Command injection via Runtime.exec,"public void runCommand(String cmd) throws Exception {
+    if (cmd.matches(""^[a-zA-Z0-9 ]+$"")) {
+        Runtime.getRuntime().exec(cmd);
+    }
+}",non-vulnerable
+task_java_2,v1,Java,Insecure random number generator,"import java.util.Random;
+public int getToken() {
+    return new Random().nextInt();
+}",vulnerable
+task_java_2,v2,Java,Insecure random number generator,"import java.security.SecureRandom;
+public int getToken() {
+    return new SecureRandom().nextInt();
+}",non-vulnerable
+task_java_3,v1,Java,Logging sensitive information,"logger.info(""Password is: "" + password);",vulnerable
+task_java_3,v2,Java,Logging sensitive information,"logger.info(""Login attempt for user."");",non-vulnerable
+task_java_4,v1,Java,SQL Injection vulnerability,"String query = ""SELECT * FROM users WHERE name='"" + user + ""'"";",vulnerable
+task_java_4,v2,Java,SQL Injection vulnerability,"PreparedStatement ps = conn.prepareStatement(""SELECT * FROM users WHERE name=?"");
+ps.setString(1, user);",non-vulnerable
+task_java_5,v1,Java,Hardcoded cryptographic key,"private static final String KEY = ""123456789abcdefg"";",vulnerable
+task_java_5,v2,Java,Hardcoded cryptographic key,"private static final String KEY = System.getenv(""ENCRYPT_KEY"");",non-vulnerable
+task_java_6,v1,Java,File path traversal,"File file = new File(""/uploads/"" + filename);",vulnerable
+task_java_6,v2,Java,File path traversal,"File file = new File(""/uploads/"", new File(filename).getName());",non-vulnerable
+task_java_7,v1,Java,Missing SSL verification,"trustAllCertificates();
+connectTo(""https://secure.example.com"");",vulnerable
+task_java_7,v2,Java,Missing SSL verification,"verifyCertificates();
+connectTo(""https://secure.example.com"");",non-vulnerable
+task_java_8,v1,Java,Deserialization without validation,"ObjectInputStream ois = new ObjectInputStream(stream);
+Object obj = ois.readObject();",vulnerable
+task_java_8,v2,Java,Deserialization without validation,"ObjectInputStream ois = new ValidatingObjectInputStream(stream);
+Object obj = ois.readObject();",non-vulnerable
+task_java_9,v1,Java,Disabling security manager,System.setSecurityManager(null);,vulnerable
+task_java_9,v2,Java,Disabling security manager,// Security manager left intact,non-vulnerable
+task_java_10,v1,Java,Printing stack traces to users,"catch (Exception e) {
+    e.printStackTrace();
+}",vulnerable
+task_java_10,v2,Java,Printing stack traces to users,"catch (Exception e) {
+    log.error(""An error occurred"");
+}",non-vulnerable
+task_java_11,v1,Java,Allowing weak TLS versions,"SSLContext.getInstance(""TLSv1"");",vulnerable
+task_java_11,v2,Java,Allowing weak TLS versions,"SSLContext.getInstance(""TLSv1.3"");",non-vulnerable
+task_java_12,v1,Java,Insecure cookie setting,"response.addCookie(new Cookie(""auth"", token));",vulnerable
+task_java_12,v2,Java,Insecure cookie setting,"Cookie c = new Cookie(""auth"", token);
+c.setSecure(true);
+c.setHttpOnly(true);
+response.addCookie(c);",non-vulnerable
+task_java_13,v1,Java,Information leakage through headers,"response.setHeader(""Server"", ""Apache Tomcat"");",vulnerable
+task_java_13,v2,Java,Information leakage through headers,"response.setHeader(""Server"", """");",non-vulnerable
+task_java_14,v1,Java,Improper access control,"if (user.getRole().equals(""admin"")) {
+    showAll();
+}",vulnerable
+task_java_14,v2,Java,Improper access control,"if (user.isAdmin()) {
+    showAll();
+}",non-vulnerable
+task_java_15,v1,Java,Weak password hashing with MD5,"MessageDigest md = MessageDigest.getInstance(""MD5"");
+md.update(pwd.getBytes());",vulnerable
+task_java_15,v2,Java,Weak password hashing with MD5,"MessageDigest md = MessageDigest.getInstance(""SHA-256"");
+md.update(pwd.getBytes());",non-vulnerable

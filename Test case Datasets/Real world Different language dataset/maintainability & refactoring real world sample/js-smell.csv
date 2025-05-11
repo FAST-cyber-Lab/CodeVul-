@@ -1,0 +1,181 @@
+task_id,variant,language,description,code,label
+task_js_smell_1,v1,JavaScript,Long Function,"function process() {
+  let a = 10, b = 20;
+  let c = a + b;
+  // ... many lines
+  console.log(c);
+}",smelly
+task_js_smell_1,v2,JavaScript,Long Function,"function sum(a, b) {
+  return a + b;
+}
+function process() {
+  let c = sum(10, 20);
+  console.log(c);
+}",clean
+task_js_smell_2,v1,JavaScript,Duplicate Code,"function drawCircle() {
+  let x = 10, y = 20;
+  console.log(`Circle at ${x},${y}`);
+}
+function drawSquare() {
+  let x = 10, y = 20;
+  console.log(`Square at ${x},${y}`);
+}",smelly
+task_js_smell_2,v2,JavaScript,Duplicate Code,"function drawShape(name, x, y) {
+  console.log(`${name} at ${x},${y}`);
+}
+function drawCircle() { drawShape('Circle', 10, 20); }
+function drawSquare() { drawShape('Square', 10, 20); }",clean
+task_js_smell_3,v1,JavaScript,Magic Numbers,let area = 3.14 * r * r;,smelly
+task_js_smell_3,v2,JavaScript,Magic Numbers,"const PI = 3.14;
+let area = PI * r * r;",clean
+task_js_smell_4,v1,JavaScript,Too Many Parameters,"function createUser(name, age, email, address, phone) {}",smelly
+task_js_smell_4,v2,JavaScript,Too Many Parameters,function createUser(user) {},clean
+task_js_smell_5,v1,JavaScript,Global Variable,"count = 0;
+function increment() { count++; }",smelly
+task_js_smell_5,v2,JavaScript,Global Variable,"let count = 0;
+function increment() { count++; }",clean
+task_js_smell_6,v1,JavaScript,Dead Code,"function example() {
+  return;
+  console.log(""Unreachable"");
+}",smelly
+task_js_smell_6,v2,JavaScript,Dead Code,"function example() {
+  return;
+}",clean
+task_js_smell_7,v1,JavaScript,Duplicated Logic,"if (a > 0) x = a; else x = -a;
+if (a > 0) y = a; else y = -a;",smelly
+task_js_smell_7,v2,JavaScript,Duplicated Logic,"function abs(n) { return n > 0 ? n : -n; }
+x = abs(a);
+y = abs(a);",clean
+task_js_smell_8,v1,JavaScript,Hardcoded Path,fs.readFileSync('/user/data/file.txt');,smelly
+task_js_smell_8,v2,JavaScript,Hardcoded Path,"const FILE_PATH = '/user/data/file.txt';
+fs.readFileSync(FILE_PATH);",clean
+task_js_smell_9,v1,JavaScript,Improper Naming,function DoSomething() {},smelly
+task_js_smell_9,v2,JavaScript,Improper Naming,function doSomething() {},clean
+task_js_smell_10,v1,JavaScript,Poor Commenting,"function add(a, b) {
+  // magic
+  return a + b;
+}",smelly
+task_js_smell_10,v2,JavaScript,Poor Commenting,"function add(a, b) {
+  // Returns the sum of two numbers
+  return a + b;
+}",clean
+task_js_smell_11,v1,JavaScript,Long Function (variation 2),"function process() {
+  let a = 10, b = 20;
+  let c = a + b;
+  // ... many lines
+  console.log(c);
+}",smelly
+task_js_smell_11,v2,JavaScript,Long Function (variation 2),"function sum(a, b) {
+  return a + b;
+}
+function process() {
+  let c = sum(10, 20);
+  console.log(c);
+}",clean
+task_js_smell_12,v1,JavaScript,Duplicate Code (variation 2),"function drawCircle() {
+  let x = 10, y = 20;
+  console.log(`Circle at ${x},${y}`);
+}
+function drawSquare() {
+  let x = 10, y = 20;
+  console.log(`Square at ${x},${y}`);
+}",smelly
+task_js_smell_12,v2,JavaScript,Duplicate Code (variation 2),"function drawShape(name, x, y) {
+  console.log(`${name} at ${x},${y}`);
+}
+function drawCircle() { drawShape('Circle', 10, 20); }
+function drawSquare() { drawShape('Square', 10, 20); }",clean
+task_js_smell_13,v1,JavaScript,Magic Numbers (variation 2),let area = 3.14 * r * r;,smelly
+task_js_smell_13,v2,JavaScript,Magic Numbers (variation 2),"const PI = 3.14;
+let area = PI * r * r;",clean
+task_js_smell_14,v1,JavaScript,Too Many Parameters (variation 2),"function createUser(name, age, email, address, phone) {}",smelly
+task_js_smell_14,v2,JavaScript,Too Many Parameters (variation 2),function createUser(user) {},clean
+task_js_smell_15,v1,JavaScript,Global Variable (variation 2),"count = 0;
+function increment() { count++; }",smelly
+task_js_smell_15,v2,JavaScript,Global Variable (variation 2),"let count = 0;
+function increment() { count++; }",clean
+task_js_smell_16,v1,JavaScript,Dead Code (variation 2),"function example() {
+  return;
+  console.log(""Unreachable"");
+}",smelly
+task_js_smell_16,v2,JavaScript,Dead Code (variation 2),"function example() {
+  return;
+}",clean
+task_js_smell_17,v1,JavaScript,Duplicated Logic (variation 2),"if (a > 0) x = a; else x = -a;
+if (a > 0) y = a; else y = -a;",smelly
+task_js_smell_17,v2,JavaScript,Duplicated Logic (variation 2),"function abs(n) { return n > 0 ? n : -n; }
+x = abs(a);
+y = abs(a);",clean
+task_js_smell_18,v1,JavaScript,Hardcoded Path (variation 2),fs.readFileSync('/user/data/file.txt');,smelly
+task_js_smell_18,v2,JavaScript,Hardcoded Path (variation 2),"const FILE_PATH = '/user/data/file.txt';
+fs.readFileSync(FILE_PATH);",clean
+task_js_smell_19,v1,JavaScript,Improper Naming (variation 2),function DoSomething() {},smelly
+task_js_smell_19,v2,JavaScript,Improper Naming (variation 2),function doSomething() {},clean
+task_js_smell_20,v1,JavaScript,Poor Commenting (variation 2),"function add(a, b) {
+  // magic
+  return a + b;
+}",smelly
+task_js_smell_20,v2,JavaScript,Poor Commenting (variation 2),"function add(a, b) {
+  // Returns the sum of two numbers
+  return a + b;
+}",clean
+task_js_smell_21,v1,JavaScript,Long Function (variation 3),"function process() {
+  let a = 10, b = 20;
+  let c = a + b;
+  // ... many lines
+  console.log(c);
+}",smelly
+task_js_smell_21,v2,JavaScript,Long Function (variation 3),"function sum(a, b) {
+  return a + b;
+}
+function process() {
+  let c = sum(10, 20);
+  console.log(c);
+}",clean
+task_js_smell_22,v1,JavaScript,Duplicate Code (variation 3),"function drawCircle() {
+  let x = 10, y = 20;
+  console.log(`Circle at ${x},${y}`);
+}
+function drawSquare() {
+  let x = 10, y = 20;
+  console.log(`Square at ${x},${y}`);
+}",smelly
+task_js_smell_22,v2,JavaScript,Duplicate Code (variation 3),"function drawShape(name, x, y) {
+  console.log(`${name} at ${x},${y}`);
+}
+function drawCircle() { drawShape('Circle', 10, 20); }
+function drawSquare() { drawShape('Square', 10, 20); }",clean
+task_js_smell_23,v1,JavaScript,Magic Numbers (variation 3),let area = 3.14 * r * r;,smelly
+task_js_smell_23,v2,JavaScript,Magic Numbers (variation 3),"const PI = 3.14;
+let area = PI * r * r;",clean
+task_js_smell_24,v1,JavaScript,Too Many Parameters (variation 3),"function createUser(name, age, email, address, phone) {}",smelly
+task_js_smell_24,v2,JavaScript,Too Many Parameters (variation 3),function createUser(user) {},clean
+task_js_smell_25,v1,JavaScript,Global Variable (variation 3),"count = 0;
+function increment() { count++; }",smelly
+task_js_smell_25,v2,JavaScript,Global Variable (variation 3),"let count = 0;
+function increment() { count++; }",clean
+task_js_smell_26,v1,JavaScript,Dead Code (variation 3),"function example() {
+  return;
+  console.log(""Unreachable"");
+}",smelly
+task_js_smell_26,v2,JavaScript,Dead Code (variation 3),"function example() {
+  return;
+}",clean
+task_js_smell_27,v1,JavaScript,Duplicated Logic (variation 3),"if (a > 0) x = a; else x = -a;
+if (a > 0) y = a; else y = -a;",smelly
+task_js_smell_27,v2,JavaScript,Duplicated Logic (variation 3),"function abs(n) { return n > 0 ? n : -n; }
+x = abs(a);
+y = abs(a);",clean
+task_js_smell_28,v1,JavaScript,Hardcoded Path (variation 3),fs.readFileSync('/user/data/file.txt');,smelly
+task_js_smell_28,v2,JavaScript,Hardcoded Path (variation 3),"const FILE_PATH = '/user/data/file.txt';
+fs.readFileSync(FILE_PATH);",clean
+task_js_smell_29,v1,JavaScript,Improper Naming (variation 3),function DoSomething() {},smelly
+task_js_smell_29,v2,JavaScript,Improper Naming (variation 3),function doSomething() {},clean
+task_js_smell_30,v1,JavaScript,Poor Commenting (variation 3),"function add(a, b) {
+  // magic
+  return a + b;
+}",smelly
+task_js_smell_30,v2,JavaScript,Poor Commenting (variation 3),"function add(a, b) {
+  // Returns the sum of two numbers
+  return a + b;
+}",clean

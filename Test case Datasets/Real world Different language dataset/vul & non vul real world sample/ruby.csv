@@ -1,0 +1,43 @@
+task_id,variant,language,description,code,label
+task_ruby_1,v1,Ruby,SQL Injection using string interpolation,"query = ""SELECT * FROM users WHERE name = '#{params[:name]}'""",vulnerable
+task_ruby_1,v2,Ruby,SQL Injection using string interpolation,query = User.where(name: params[:name]),non-vulnerable
+task_ruby_2,v1,Ruby,Command injection via system call,"system(""ls #{params[:dir]}"")",vulnerable
+task_ruby_2,v2,Ruby,Command injection via system call,"dir = Shellwords.escape(params[:dir])
+system(""ls #{dir}"")",non-vulnerable
+task_ruby_3,v1,Ruby,Hardcoded credentials in code,API_KEY = '1234567890abcdef',vulnerable
+task_ruby_3,v2,Ruby,Hardcoded credentials in code,API_KEY = ENV['API_KEY'],non-vulnerable
+task_ruby_4,v1,Ruby,XSS vulnerability via raw output,<%= params[:msg] %>,vulnerable
+task_ruby_4,v2,Ruby,XSS vulnerability via raw output,<%= h(params[:msg]) %>,non-vulnerable
+task_ruby_5,v1,Ruby,Sensitive data exposure via logs,"Rails.logger.info(""Password: #{params[:password]}"")",vulnerable
+task_ruby_5,v2,Ruby,Sensitive data exposure via logs,"Rails.logger.info(""Login attempt recorded"")",non-vulnerable
+task_ruby_6,v1,Ruby,File path traversal,"send_file ""uploads/#{params[:file]}""",vulnerable
+task_ruby_6,v2,Ruby,File path traversal,"filename = File.basename(params[:file])
+send_file Rails.root.join('uploads', filename)",non-vulnerable
+task_ruby_7,v1,Ruby,Open redirect vulnerability,redirect_to params[:url],vulnerable
+task_ruby_7,v2,Ruby,Open redirect vulnerability,redirect_to params[:url] if params[:url].start_with?('https://trusted.com'),non-vulnerable
+task_ruby_8,v1,Ruby,Insecure deserialization,eval(params[:data]),vulnerable
+task_ruby_8,v2,Ruby,Insecure deserialization,JSON.parse(params[:data]),non-vulnerable
+task_ruby_9,v1,Ruby,No CSRF protection,skip_before_action :verify_authenticity_token,vulnerable
+task_ruby_9,v2,Ruby,No CSRF protection,# CSRF protection enabled by default,non-vulnerable
+task_ruby_10,v1,Ruby,Unrestricted file upload,"uploaded_io = params[:file]
+File.open(Rails.root.join('uploads', uploaded_io.original_filename), 'wb') { |f| f.write(uploaded_io.read) }",vulnerable
+task_ruby_10,v2,Ruby,Unrestricted file upload,"if uploaded_io.content_type == 'text/plain'
+  File.open(Rails.root.join('uploads', uploaded_io.original_filename), 'wb') { |f| f.write(uploaded_io.read) }
+end",non-vulnerable
+task_ruby_11,v1,Ruby,Weak password hashing using SHA1,Digest::SHA1.hexdigest(password),vulnerable
+task_ruby_11,v2,Ruby,Weak password hashing using SHA1,BCrypt::Password.create(password),non-vulnerable
+task_ruby_12,v1,Ruby,Allowing unsafe YAML deserialization,YAML.load(params[:yaml]),vulnerable
+task_ruby_12,v2,Ruby,Allowing unsafe YAML deserialization,YAML.safe_load(params[:yaml]),non-vulnerable
+task_ruby_13,v1,Ruby,Exposing stack trace in production,"rescue => e
+  render plain: e.full_message",vulnerable
+task_ruby_13,v2,Ruby,Exposing stack trace in production,"rescue => e
+  logger.error e.message
+  render plain: 'Internal Server Error'",non-vulnerable
+task_ruby_14,v1,Ruby,Missing secure cookie flags,cookies[:token] = token,vulnerable
+task_ruby_14,v2,Ruby,Missing secure cookie flags,"cookies[:token] = { value: token, secure: true, httponly: true }",non-vulnerable
+task_ruby_15,v1,Ruby,Improper role validation,"if current_user.role == 'admin'
+  render :admin_panel
+end",vulnerable
+task_ruby_15,v2,Ruby,Improper role validation,"if current_user.admin?
+  render :admin_panel
+end",non-vulnerable

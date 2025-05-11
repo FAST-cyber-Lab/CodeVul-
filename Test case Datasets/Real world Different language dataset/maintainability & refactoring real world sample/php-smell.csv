@@ -1,0 +1,202 @@
+task_id,variant,language,description,code,label
+task_php_smell_1,v1,PHP,Long Function,"function process() {
+  $a = 10;
+  $b = 20;
+  $c = $a + $b;
+  // many more lines...
+  echo $c;
+}",smelly
+task_php_smell_1,v2,PHP,Long Function,"function add($a, $b) {
+  return $a + $b;
+}
+function process() {
+  $c = add(10, 20);
+  echo $c;
+}",clean
+task_php_smell_2,v1,PHP,Duplicate Code,"function drawCircle() {
+  $x = 10;
+  $y = 20;
+  echo ""Circle at $x,$y"";
+}
+function drawSquare() {
+  $x = 10;
+  $y = 20;
+  echo ""Square at $x,$y"";
+}",smelly
+task_php_smell_2,v2,PHP,Duplicate Code,"function drawShape($shape, $x, $y) {
+  echo ""$shape at $x,$y"";
+}
+function drawCircle() { drawShape('Circle', 10, 20); }
+function drawSquare() { drawShape('Square', 10, 20); }",clean
+task_php_smell_3,v1,PHP,Magic Numbers,$area = 3.14 * $r * $r;,smelly
+task_php_smell_3,v2,PHP,Magic Numbers,"define('PI', 3.14);
+$area = PI * $r * $r;",clean
+task_php_smell_4,v1,PHP,Too Many Parameters,"function register($name, $age, $email, $phone, $address) {}",smelly
+task_php_smell_4,v2,PHP,Too Many Parameters,function register($user) {},clean
+task_php_smell_5,v1,PHP,Global Variable,"$counter = 0;
+function increment() {
+  global $counter;
+  $counter++;
+}",smelly
+task_php_smell_5,v2,PHP,Global Variable,"function increment($counter) {
+  return $counter + 1;
+}",clean
+task_php_smell_6,v1,PHP,Dead Code,"function run() {
+  return;
+  echo ""Unreachable"";
+}",smelly
+task_php_smell_6,v2,PHP,Dead Code,"function run() {
+  return;
+}",clean
+task_php_smell_7,v1,PHP,Duplicated Logic,"if ($a > 0) $x = $a; else $x = -$a;
+if ($a > 0) $y = $a; else $y = -$a;",smelly
+task_php_smell_7,v2,PHP,Duplicated Logic,"function absVal($n) { return $n > 0 ? $n : -$n; }
+$x = absVal($a);
+$y = absVal($a);",clean
+task_php_smell_8,v1,PHP,Hardcoded Path,$content = file_get_contents('/var/www/data.txt');,smelly
+task_php_smell_8,v2,PHP,Hardcoded Path,"define('DATA_PATH', '/var/www/data.txt');
+$content = file_get_contents(DATA_PATH);",clean
+task_php_smell_9,v1,PHP,Improper Naming,function DoSomething() {},smelly
+task_php_smell_9,v2,PHP,Improper Naming,function do_something() {},clean
+task_php_smell_10,v1,PHP,Poor Commenting,"function add($a, $b) {
+  // math
+  return $a + $b;
+}",smelly
+task_php_smell_10,v2,PHP,Poor Commenting,"function add($a, $b) {
+  // return the sum of two numbers
+  return $a + $b;
+}",clean
+task_php_smell_11,v1,PHP,Long Function (variation 2),"function process() {
+  $a = 10;
+  $b = 20;
+  $c = $a + $b;
+  // many more lines...
+  echo $c;
+}",smelly
+task_php_smell_11,v2,PHP,Long Function (variation 2),"function add($a, $b) {
+  return $a + $b;
+}
+function process() {
+  $c = add(10, 20);
+  echo $c;
+}",clean
+task_php_smell_12,v1,PHP,Duplicate Code (variation 2),"function drawCircle() {
+  $x = 10;
+  $y = 20;
+  echo ""Circle at $x,$y"";
+}
+function drawSquare() {
+  $x = 10;
+  $y = 20;
+  echo ""Square at $x,$y"";
+}",smelly
+task_php_smell_12,v2,PHP,Duplicate Code (variation 2),"function drawShape($shape, $x, $y) {
+  echo ""$shape at $x,$y"";
+}
+function drawCircle() { drawShape('Circle', 10, 20); }
+function drawSquare() { drawShape('Square', 10, 20); }",clean
+task_php_smell_13,v1,PHP,Magic Numbers (variation 2),$area = 3.14 * $r * $r;,smelly
+task_php_smell_13,v2,PHP,Magic Numbers (variation 2),"define('PI', 3.14);
+$area = PI * $r * $r;",clean
+task_php_smell_14,v1,PHP,Too Many Parameters (variation 2),"function register($name, $age, $email, $phone, $address) {}",smelly
+task_php_smell_14,v2,PHP,Too Many Parameters (variation 2),function register($user) {},clean
+task_php_smell_15,v1,PHP,Global Variable (variation 2),"$counter = 0;
+function increment() {
+  global $counter;
+  $counter++;
+}",smelly
+task_php_smell_15,v2,PHP,Global Variable (variation 2),"function increment($counter) {
+  return $counter + 1;
+}",clean
+task_php_smell_16,v1,PHP,Dead Code (variation 2),"function run() {
+  return;
+  echo ""Unreachable"";
+}",smelly
+task_php_smell_16,v2,PHP,Dead Code (variation 2),"function run() {
+  return;
+}",clean
+task_php_smell_17,v1,PHP,Duplicated Logic (variation 2),"if ($a > 0) $x = $a; else $x = -$a;
+if ($a > 0) $y = $a; else $y = -$a;",smelly
+task_php_smell_17,v2,PHP,Duplicated Logic (variation 2),"function absVal($n) { return $n > 0 ? $n : -$n; }
+$x = absVal($a);
+$y = absVal($a);",clean
+task_php_smell_18,v1,PHP,Hardcoded Path (variation 2),$content = file_get_contents('/var/www/data.txt');,smelly
+task_php_smell_18,v2,PHP,Hardcoded Path (variation 2),"define('DATA_PATH', '/var/www/data.txt');
+$content = file_get_contents(DATA_PATH);",clean
+task_php_smell_19,v1,PHP,Improper Naming (variation 2),function DoSomething() {},smelly
+task_php_smell_19,v2,PHP,Improper Naming (variation 2),function do_something() {},clean
+task_php_smell_20,v1,PHP,Poor Commenting (variation 2),"function add($a, $b) {
+  // math
+  return $a + $b;
+}",smelly
+task_php_smell_20,v2,PHP,Poor Commenting (variation 2),"function add($a, $b) {
+  // return the sum of two numbers
+  return $a + $b;
+}",clean
+task_php_smell_21,v1,PHP,Long Function (variation 3),"function process() {
+  $a = 10;
+  $b = 20;
+  $c = $a + $b;
+  // many more lines...
+  echo $c;
+}",smelly
+task_php_smell_21,v2,PHP,Long Function (variation 3),"function add($a, $b) {
+  return $a + $b;
+}
+function process() {
+  $c = add(10, 20);
+  echo $c;
+}",clean
+task_php_smell_22,v1,PHP,Duplicate Code (variation 3),"function drawCircle() {
+  $x = 10;
+  $y = 20;
+  echo ""Circle at $x,$y"";
+}
+function drawSquare() {
+  $x = 10;
+  $y = 20;
+  echo ""Square at $x,$y"";
+}",smelly
+task_php_smell_22,v2,PHP,Duplicate Code (variation 3),"function drawShape($shape, $x, $y) {
+  echo ""$shape at $x,$y"";
+}
+function drawCircle() { drawShape('Circle', 10, 20); }
+function drawSquare() { drawShape('Square', 10, 20); }",clean
+task_php_smell_23,v1,PHP,Magic Numbers (variation 3),$area = 3.14 * $r * $r;,smelly
+task_php_smell_23,v2,PHP,Magic Numbers (variation 3),"define('PI', 3.14);
+$area = PI * $r * $r;",clean
+task_php_smell_24,v1,PHP,Too Many Parameters (variation 3),"function register($name, $age, $email, $phone, $address) {}",smelly
+task_php_smell_24,v2,PHP,Too Many Parameters (variation 3),function register($user) {},clean
+task_php_smell_25,v1,PHP,Global Variable (variation 3),"$counter = 0;
+function increment() {
+  global $counter;
+  $counter++;
+}",smelly
+task_php_smell_25,v2,PHP,Global Variable (variation 3),"function increment($counter) {
+  return $counter + 1;
+}",clean
+task_php_smell_26,v1,PHP,Dead Code (variation 3),"function run() {
+  return;
+  echo ""Unreachable"";
+}",smelly
+task_php_smell_26,v2,PHP,Dead Code (variation 3),"function run() {
+  return;
+}",clean
+task_php_smell_27,v1,PHP,Duplicated Logic (variation 3),"if ($a > 0) $x = $a; else $x = -$a;
+if ($a > 0) $y = $a; else $y = -$a;",smelly
+task_php_smell_27,v2,PHP,Duplicated Logic (variation 3),"function absVal($n) { return $n > 0 ? $n : -$n; }
+$x = absVal($a);
+$y = absVal($a);",clean
+task_php_smell_28,v1,PHP,Hardcoded Path (variation 3),$content = file_get_contents('/var/www/data.txt');,smelly
+task_php_smell_28,v2,PHP,Hardcoded Path (variation 3),"define('DATA_PATH', '/var/www/data.txt');
+$content = file_get_contents(DATA_PATH);",clean
+task_php_smell_29,v1,PHP,Improper Naming (variation 3),function DoSomething() {},smelly
+task_php_smell_29,v2,PHP,Improper Naming (variation 3),function do_something() {},clean
+task_php_smell_30,v1,PHP,Poor Commenting (variation 3),"function add($a, $b) {
+  // math
+  return $a + $b;
+}",smelly
+task_php_smell_30,v2,PHP,Poor Commenting (variation 3),"function add($a, $b) {
+  // return the sum of two numbers
+  return $a + $b;
+}",clean

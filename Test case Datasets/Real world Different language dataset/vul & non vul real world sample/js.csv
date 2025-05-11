@@ -1,0 +1,52 @@
+task_id,variant,language,description,code,label
+task_js_1,v1,JavaScript,Use of eval with user input,"function runCode(input) {
+  eval(input);
+}",vulnerable
+task_js_1,v2,JavaScript,Use of eval with user input,"function runCode(input) {
+  console.log('Execution not allowed');
+}",non-vulnerable
+task_js_2,v1,JavaScript,Insecure redirect with user input,"function redirect(url) {
+  window.location = url;
+}",vulnerable
+task_js_2,v2,JavaScript,Insecure redirect with user input,"function redirect(url) {
+  if (url.startsWith('https://trusted.com')) {
+    window.location = url;
+  }
+}",non-vulnerable
+task_js_3,v1,JavaScript,Hardcoded credentials in code,"const username = 'admin';
+const password = '1234';",vulnerable
+task_js_3,v2,JavaScript,Hardcoded credentials in code,"const username = process.env.USER;
+const password = process.env.PASS;",non-vulnerable
+task_js_4,v1,JavaScript,XSS vulnerability in innerHTML,"function show(msg) {
+  document.body.innerHTML = msg;
+}",vulnerable
+task_js_4,v2,JavaScript,XSS vulnerability in innerHTML,"function show(msg) {
+  document.body.textContent = msg;
+}",non-vulnerable
+task_js_5,v1,JavaScript,Insecure storage of data in localStorage,"localStorage.setItem('token', 'secret_token');",vulnerable
+task_js_5,v2,JavaScript,Insecure storage of data in localStorage,"sessionStorage.setItem('token', encrypt('secret_token'));",non-vulnerable
+task_js_6,v1,JavaScript,No CSRF protection in form,<form action='/submit' method='POST'>,vulnerable
+task_js_6,v2,JavaScript,No CSRF protection in form,"<form action='/submit' method='POST'>
+  <input type='hidden' name='csrf_token' value='{{csrf}}'>",non-vulnerable
+task_js_7,v1,JavaScript,Improper input sanitization,"function greet(name) {
+  alert('Hello ' + name);
+}",vulnerable
+task_js_7,v2,JavaScript,Improper input sanitization,"function greet(name) {
+  alert('Hello ' + encodeURIComponent(name));
+}",non-vulnerable
+task_js_8,v1,JavaScript,Open CORS policy,"res.setHeader('Access-Control-Allow-Origin', '*');",vulnerable
+task_js_8,v2,JavaScript,Open CORS policy,"res.setHeader('Access-Control-Allow-Origin', 'https://trusted.com');",non-vulnerable
+task_js_9,v1,JavaScript,Unrestricted file upload,"app.post('/upload', upload.any(), handler);",vulnerable
+task_js_9,v2,JavaScript,Unrestricted file upload,"app.post('/upload', upload.single('file'), validateFileType, handler);",non-vulnerable
+task_js_10,v1,JavaScript,Path traversal vulnerability,fs.readFileSync('/uploads/' + userFile);,vulnerable
+task_js_10,v2,JavaScript,Path traversal vulnerability,"fs.readFileSync(path.join(__dirname, 'uploads', path.basename(userFile)));",non-vulnerable
+task_js_11,v1,JavaScript,Sensitive data exposure in logs,console.log('User password: ' + password);,vulnerable
+task_js_11,v2,JavaScript,Sensitive data exposure in logs,console.log('User login attempted');,non-vulnerable
+task_js_12,v1,JavaScript,Unsafe JSON parsing,let obj = eval('(' + userInput + ')');,vulnerable
+task_js_12,v2,JavaScript,Unsafe JSON parsing,let obj = JSON.parse(userInput);,non-vulnerable
+task_js_13,v1,JavaScript,Improper password comparison,if (input === 'admin123') { login(); },vulnerable
+task_js_13,v2,JavaScript,Improper password comparison,"if (crypto.timingSafeEqual(Buffer.from(input), Buffer.from('admin123'))) { login(); }",non-vulnerable
+task_js_14,v1,JavaScript,Server error exposed to user,res.send(err.stack);,vulnerable
+task_js_14,v2,JavaScript,Server error exposed to user,res.send('Internal Server Error');,non-vulnerable
+task_js_15,v1,JavaScript,Lack of HTTPS enforcement,res.redirect('http://' + req.headers.host);,vulnerable
+task_js_15,v2,JavaScript,Lack of HTTPS enforcement,res.redirect('https://' + req.headers.host);,non-vulnerable

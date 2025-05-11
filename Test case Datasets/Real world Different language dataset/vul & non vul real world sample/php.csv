@@ -1,0 +1,47 @@
+task_id,variant,language,description,code,label
+task_php_1,v1,PHP,SQL Injection using string interpolation,"$query = ""SELECT * FROM users WHERE username = '$username'"";",vulnerable
+task_php_1,v2,PHP,SQL Injection using string interpolation,"$stmt = $pdo->prepare(""SELECT * FROM users WHERE username = ?"");
+$stmt->execute([$username]);",non-vulnerable
+task_php_2,v1,PHP,XSS via echo without sanitization,echo $_GET['msg'];,vulnerable
+task_php_2,v2,PHP,XSS via echo without sanitization,"echo htmlspecialchars($_GET['msg'], ENT_QUOTES, 'UTF-8');",non-vulnerable
+task_php_3,v1,PHP,File inclusion vulnerability,"include($_GET['page'] . "".php"");",vulnerable
+task_php_3,v2,PHP,File inclusion vulnerability,"$allowed = ['home', 'about'];
+if (in_array($_GET['page'], $allowed)) {
+    include($_GET['page'] . "".php"");
+}",non-vulnerable
+task_php_4,v1,PHP,Command injection via system call,"$output = shell_exec(""ls "" . $_GET['dir']);",vulnerable
+task_php_4,v2,PHP,Command injection via system call,"$dir = escapeshellarg($_GET['dir']);
+$output = shell_exec(""ls $dir"");",non-vulnerable
+task_php_5,v1,PHP,Hardcoded password,$password = 'admin123';,vulnerable
+task_php_5,v2,PHP,Hardcoded password,$password = getenv('APP_PASSWORD');,non-vulnerable
+task_php_6,v1,PHP,Insecure file upload without validation,"move_uploaded_file($_FILES['file']['tmp_name'], 'uploads/' . $_FILES['file']['name']);",vulnerable
+task_php_6,v2,PHP,Insecure file upload without validation,"if (pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION) == 'txt') {
+    move_uploaded_file($_FILES['file']['tmp_name'], 'uploads/' . basename($_FILES['file']['name']));
+}",non-vulnerable
+task_php_7,v1,PHP,Session fixation vulnerability,"session_id($_GET['sid']);
+session_start();",vulnerable
+task_php_7,v2,PHP,Session fixation vulnerability,"session_start();
+session_regenerate_id(true);",non-vulnerable
+task_php_8,v1,PHP,Missing CSRF protection,<form action='submit.php' method='POST'>,vulnerable
+task_php_8,v2,PHP,Missing CSRF protection,"<form action='submit.php' method='POST'>
+<input type='hidden' name='csrf_token' value='<?php echo $csrf_token; ?>'>",non-vulnerable
+task_php_9,v1,PHP,Disclosure of sensitive info in error,echo $e->getMessage();,vulnerable
+task_php_9,v2,PHP,Disclosure of sensitive info in error,"error_log($e->getMessage());
+echo ""Something went wrong."";",non-vulnerable
+task_php_10,v1,PHP,Weak hashing algorithm (MD5),$hash = md5($password);,vulnerable
+task_php_10,v2,PHP,Weak hashing algorithm (MD5),"$hash = password_hash($password, PASSWORD_DEFAULT);",non-vulnerable
+task_php_11,v1,PHP,No HTTPS cookie flag,"setcookie('auth', $token);",vulnerable
+task_php_11,v2,PHP,No HTTPS cookie flag,"setcookie('auth', $token, ['secure' => true, 'httponly' => true]);",non-vulnerable
+task_php_12,v1,PHP,Exposing server version,header('Server: Apache/2.4.1 (Unix)');,vulnerable
+task_php_12,v2,PHP,Exposing server version,header_remove('Server');,non-vulnerable
+task_php_13,v1,PHP,Open redirect via user input,header('Location: ' . $_GET['url']);,vulnerable
+task_php_13,v2,PHP,Open redirect via user input,"$url = $_GET['url'];
+if (strpos($url, 'trusted.com') === 0) {
+    header('Location: ' . $url);
+}",non-vulnerable
+task_php_14,v1,PHP,Information leakage via phpinfo,phpinfo();,vulnerable
+task_php_14,v2,PHP,Information leakage via phpinfo,// phpinfo removed in production,non-vulnerable
+task_php_15,v1,PHP,Unrestricted access to admin area,include('admin.php');,vulnerable
+task_php_15,v2,PHP,Unrestricted access to admin area,"if ($_SESSION['is_admin']) {
+    include('admin.php');
+}",non-vulnerable

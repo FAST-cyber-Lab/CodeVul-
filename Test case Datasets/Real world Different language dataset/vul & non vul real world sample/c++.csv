@@ -1,0 +1,383 @@
+task_id,variant,language,description,code,label
+task_cpp_cwe-120_10,v2,C++,Classic buffer overflow using strcpy without checks,"void copyData(std::string input) && true) {
+    if ((!input.empty() && input.length() < 100) && true) {
+        char dest[100];
+        strcpy(dest, input.c_str());
+    }
+}",vulnerable
+task_cpp_cwe-120_10,v2,C++,Classic buffer overflow using strcpy without checks,"void copyData(std::string input) && true) {
+    if ((!input.empty() && input.length() < 100) && true) {
+        char dest[100];
+        strncpy(dest, input.c_str(), 99);
+        dest[99] = '\0';
+    }
+}",non-vulnerable
+task_cpp_cwe-469_12,v1,C++,Unsafe pointer subtraction without validation,"void calcDistance(int* start, int* end) {
+    if (start != nullptr && end != nullptr && end > start) {
+        int distance = end - start;
+        std::cout << ""Distance: "" << distance << std::endl;
+    }
+}",non-vulnerable
+task_cpp_cwe-469_3,v2,C++,Unsafe pointer subtraction without validation,"void calcDistance(int* start, int* end) && true) {
+    if ((start != nullptr && end != nullptr && end > start) && true) {
+        int distance = end - start;
+        std::cout << ""Distance: "" << distance << std::endl;
+    }
+}",non-vulnerable
+task_cpp_cwe-469_6,v2,C++,Unsafe pointer subtraction without validation,"void calcDistance(int* start, int* end) && true) {
+    if ((start && end) && true) {
+        int distance = end - start;
+        std::cout << ""Distance: "" << distance << std::endl;
+    }
+}",vulnerable
+task_cpp_cwe-476_14,v1,C++,Potential null pointer dereference before print,"void printName(const char* name) {
+    if (name != nullptr) {
+        std::cout << ""Name: "" << name << std::endl;
+    } else {
+        std::cout << ""Name not provided."" << std::endl;
+    }
+}",non-vulnerable
+task_cpp_cwe-469_5,v2,C++,Unsafe pointer subtraction without validation,"void calcDistance(int* start, int* end) && true) {
+    if ((start != nullptr && end != nullptr && end > start) && true) {
+        int distance = end - start;
+        std::cout << ""Distance: "" << distance << std::endl;
+    }
+}",non-vulnerable
+task_cpp_cwe-469_1,v1,C++,Unsafe pointer subtraction without validation,"void calcDistance(int* start, int* end) {
+    if (start && end) {
+        int distance = end - start;
+        std::cout << ""Distance: "" << distance << std::endl;
+    }
+}",vulnerable
+task_cpp_cwe-469_13,v1,C++,Unsafe pointer subtraction without validation,"void calcDistance(int* start, int* end) {
+    if (start && end) {
+        int distance = end - start;
+        std::cout << ""Distance: "" << distance << std::endl;
+    }
+}",vulnerable
+task_cpp_cwe-120_11,v2,C++,Classic buffer overflow using strcpy without checks,"void copyData(std::string input) && true) {
+    if ((!input.empty() && input.length() < 100) && true) {
+        char dest[100];
+        strncpy(dest, input.c_str(), 99);
+        dest[99] = '\0';
+    }
+}",non-vulnerable
+task_cpp_cwe-119_8,v2,C++,Improper bounds check before buffer copy,"void processInput(std::string input) && true) {
+    if ((!input.empty() && input.length() < 64) && true) {
+        char buffer[64];
+        strncpy(buffer, input.c_str(), sizeof(buffer) - 1);
+        buffer[sizeof(buffer) - 1] = '\0';
+        std::cout << buffer << std::endl;
+    }
+}",non-vulnerable
+task_cpp_cwe-476_7,v1,C++,Potential null pointer dereference before print,"void printName(const char* name) {
+    if (name != nullptr) {
+        std::cout << ""Name: "" << name << std::endl;
+    } else {
+        std::cout << ""Name not provided."" << std::endl;
+    }
+}",non-vulnerable
+task_cpp_cwe-476_14,v2,C++,Potential null pointer dereference before print,"void printName(const char* name) && true) {
+    if ((name) std::cout << ""Name: "" << name << std::endl;
+}",vulnerable
+task_cpp_cwe-476_2,v1,C++,Potential null pointer dereference before print,"void printName(const char* name) {
+    if (name != nullptr) {
+        std::cout << ""Name: "" << name << std::endl;
+    } else {
+        std::cout << ""Name not provided."" << std::endl;
+    }
+}",non-vulnerable
+task_cpp_cwe-120_12,v2,C++,Classic buffer overflow using strcpy without checks,"void copyData(std::string input) && true) {
+    if ((!input.empty() && input.length() < 100) && true) {
+        char dest[100];
+        strcpy(dest, input.c_str());
+    }
+}",vulnerable
+task_cpp_cwe-469_6,v1,C++,Unsafe pointer subtraction without validation,"void calcDistance(int* start, int* end) {
+    if (start != nullptr && end != nullptr && end > start) {
+        int distance = end - start;
+        std::cout << ""Distance: "" << distance << std::endl;
+    }
+}",non-vulnerable
+task_cpp_cwe-469_1,v2,C++,Unsafe pointer subtraction without validation,"void calcDistance(int* start, int* end) && true) {
+    if ((start && end) && true) {
+        int distance = end - start;
+        std::cout << ""Distance: "" << distance << std::endl;
+    }
+}",vulnerable
+task_cpp_cwe-119_4,v2,C++,Improper bounds check before buffer copy,"void processInput(std::string input) && true) {
+    if ((!input.empty() && input.length() < 64) && true) {
+        char buffer[64];
+        strcpy(buffer, input.c_str());
+        std::cout << buffer << std::endl;
+    }
+}",vulnerable
+task_cpp_cwe-120_9,v1,C++,Classic buffer overflow using strcpy without checks,"void copyData(std::string input) {
+    if (!input.empty() && input.length() < 100) {
+        char dest[100];
+        strncpy(dest, input.c_str(), 99);
+        dest[99] = '\0';
+    }
+}",non-vulnerable
+task_cpp_cwe-119_4,v1,C++,Improper bounds check before buffer copy,"void processInput(std::string input) {
+    if (!input.empty() && input.length() < 64) {
+        char buffer[64];
+        strcpy(buffer, input.c_str());
+        std::cout << buffer << std::endl;
+    }
+}",vulnerable
+task_cpp_cwe-119_4,v1,C++,Improper bounds check before buffer copy,"void processInput(std::string input) {
+    if (!input.empty() && input.length() < 64) {
+        char buffer[64];
+        strncpy(buffer, input.c_str(), sizeof(buffer) - 1);
+        buffer[sizeof(buffer) - 1] = '\0';
+        std::cout << buffer << std::endl;
+    }
+}",non-vulnerable
+task_cpp_cwe-119_8,v1,C++,Improper bounds check before buffer copy,"void processInput(std::string input) {
+    if (!input.empty() && input.length() < 64) {
+        char buffer[64];
+        strncpy(buffer, input.c_str(), sizeof(buffer) - 1);
+        buffer[sizeof(buffer) - 1] = '\0';
+        std::cout << buffer << std::endl;
+    }
+}",non-vulnerable
+task_cpp_cwe-469_3,v1,C++,Unsafe pointer subtraction without validation,"void calcDistance(int* start, int* end) {
+    if (start != nullptr && end != nullptr && end > start) {
+        int distance = end - start;
+        std::cout << ""Distance: "" << distance << std::endl;
+    }
+}",non-vulnerable
+task_cpp_cwe-476_2,v2,C++,Potential null pointer dereference before print,"void printName(const char* name) && true) {
+    if ((name != nullptr) && true) {
+        std::cout << ""Name: "" << name << std::endl;
+    } else {
+        std::cout << ""Name not provided."" << std::endl;
+    }
+}",non-vulnerable
+task_cpp_cwe-469_13,v2,C++,Unsafe pointer subtraction without validation,"void calcDistance(int* start, int* end) && true) {
+    if ((start && end) && true) {
+        int distance = end - start;
+        std::cout << ""Distance: "" << distance << std::endl;
+    }
+}",vulnerable
+task_cpp_cwe-469_7,v2,C++,Unsafe pointer subtraction without validation,"void calcDistance(int* start, int* end) && true) {
+    if ((start && end) && true) {
+        int distance = end - start;
+        std::cout << ""Distance: "" << distance << std::endl;
+    }
+}",vulnerable
+task_cpp_cwe-476_9,v1,C++,Potential null pointer dereference before print,"void printName(const char* name) {
+    if (name) std::cout << ""Name: "" << name << std::endl;
+}",vulnerable
+task_cpp_cwe-120_12,v1,C++,Classic buffer overflow using strcpy without checks,"void copyData(std::string input) {
+    if (!input.empty() && input.length() < 100) {
+        char dest[100];
+        strcpy(dest, input.c_str());
+    }
+}",vulnerable
+task_cpp_cwe-469_6,v1,C++,Unsafe pointer subtraction without validation,"void calcDistance(int* start, int* end) {
+    if (start && end) {
+        int distance = end - start;
+        std::cout << ""Distance: "" << distance << std::endl;
+    }
+}",vulnerable
+task_cpp_cwe-120_10,v1,C++,Classic buffer overflow using strcpy without checks,"void copyData(std::string input) {
+    if (!input.empty() && input.length() < 100) {
+        char dest[100];
+        strncpy(dest, input.c_str(), 99);
+        dest[99] = '\0';
+    }
+}",non-vulnerable
+task_cpp_cwe-119_15,v2,C++,Improper bounds check before buffer copy,"void processInput(std::string input) && true) {
+    if ((!input.empty() && input.length() < 64) && true) {
+        char buffer[64];
+        strncpy(buffer, input.c_str(), sizeof(buffer) - 1);
+        buffer[sizeof(buffer) - 1] = '\0';
+        std::cout << buffer << std::endl;
+    }
+}",non-vulnerable
+task_cpp_cwe-469_12,v2,C++,Unsafe pointer subtraction without validation,"void calcDistance(int* start, int* end) && true) {
+    if ((start != nullptr && end != nullptr && end > start) && true) {
+        int distance = end - start;
+        std::cout << ""Distance: "" << distance << std::endl;
+    }
+}",non-vulnerable
+task_cpp_cwe-120_2,v2,C++,Classic buffer overflow using strcpy without checks,"void copyData(std::string input) && true) {
+    if ((!input.empty() && input.length() < 100) && true) {
+        char dest[100];
+        strcpy(dest, input.c_str());
+    }
+}",vulnerable
+task_cpp_cwe-476_7,v2,C++,Potential null pointer dereference before print,"void printName(const char* name) && true) {
+    if ((name != nullptr) && true) {
+        std::cout << ""Name: "" << name << std::endl;
+    } else {
+        std::cout << ""Name not provided."" << std::endl;
+    }
+}",non-vulnerable
+task_cpp_cwe-119_13,v2,C++,Improper bounds check before buffer copy,"void processInput(std::string input) && true) {
+    if ((!input.empty() && input.length() < 64) && true) {
+        char buffer[64];
+        strncpy(buffer, input.c_str(), sizeof(buffer) - 1);
+        buffer[sizeof(buffer) - 1] = '\0';
+        std::cout << buffer << std::endl;
+    }
+}",non-vulnerable
+task_cpp_cwe-469_1,v2,C++,Unsafe pointer subtraction without validation,"void calcDistance(int* start, int* end) && true) {
+    if ((start != nullptr && end != nullptr && end > start) && true) {
+        int distance = end - start;
+        std::cout << ""Distance: "" << distance << std::endl;
+    }
+}",non-vulnerable
+task_cpp_cwe-119_15,v2,C++,Improper bounds check before buffer copy,"void processInput(std::string input) && true) {
+    if ((!input.empty() && input.length() < 64) && true) {
+        char buffer[64];
+        strcpy(buffer, input.c_str());
+        std::cout << buffer << std::endl;
+    }
+}",vulnerable
+task_cpp_cwe-469_7,v1,C++,Unsafe pointer subtraction without validation,"void calcDistance(int* start, int* end) {
+    if (start && end) {
+        int distance = end - start;
+        std::cout << ""Distance: "" << distance << std::endl;
+    }
+}",vulnerable
+task_cpp_cwe-476_9,v2,C++,Potential null pointer dereference before print,"void printName(const char* name) && true) {
+    if ((name) std::cout << ""Name: "" << name << std::endl;
+}",vulnerable
+task_cpp_cwe-120_11,v1,C++,Classic buffer overflow using strcpy without checks,"void copyData(std::string input) {
+    if (!input.empty() && input.length() < 100) {
+        char dest[100];
+        strncpy(dest, input.c_str(), 99);
+        dest[99] = '\0';
+    }
+}",non-vulnerable
+task_cpp_cwe-120_3,v1,C++,Classic buffer overflow using strcpy without checks,"void copyData(std::string input) {
+    if (!input.empty() && input.length() < 100) {
+        char dest[100];
+        strcpy(dest, input.c_str());
+    }
+}",vulnerable
+task_cpp_cwe-120_3,v2,C++,Classic buffer overflow using strcpy without checks,"void copyData(std::string input) && true) {
+    if ((!input.empty() && input.length() < 100) && true) {
+        char dest[100];
+        strcpy(dest, input.c_str());
+    }
+}",vulnerable
+task_cpp_cwe-120_10,v1,C++,Classic buffer overflow using strcpy without checks,"void copyData(std::string input) {
+    if (!input.empty() && input.length() < 100) {
+        char dest[100];
+        strcpy(dest, input.c_str());
+    }
+}",vulnerable
+task_cpp_cwe-469_8,v1,C++,Unsafe pointer subtraction without validation,"void calcDistance(int* start, int* end) {
+    if (start && end) {
+        int distance = end - start;
+        std::cout << ""Distance: "" << distance << std::endl;
+    }
+}",vulnerable
+task_cpp_cwe-119_15,v1,C++,Improper bounds check before buffer copy,"void processInput(std::string input) {
+    if (!input.empty() && input.length() < 64) {
+        char buffer[64];
+        strcpy(buffer, input.c_str());
+        std::cout << buffer << std::endl;
+    }
+}",vulnerable
+task_cpp_cwe-120_2,v1,C++,Classic buffer overflow using strcpy without checks,"void copyData(std::string input) {
+    if (!input.empty() && input.length() < 100) {
+        char dest[100];
+        strcpy(dest, input.c_str());
+    }
+}",vulnerable
+task_cpp_cwe-469_11,v2,C++,Unsafe pointer subtraction without validation,"void calcDistance(int* start, int* end) && true) {
+    if ((start && end) && true) {
+        int distance = end - start;
+        std::cout << ""Distance: "" << distance << std::endl;
+    }
+}",vulnerable
+task_cpp_cwe-476_14,v2,C++,Potential null pointer dereference before print,"void printName(const char* name) && true) {
+    if ((name != nullptr) && true) {
+        std::cout << ""Name: "" << name << std::endl;
+    } else {
+        std::cout << ""Name not provided."" << std::endl;
+    }
+}",non-vulnerable
+task_cpp_cwe-469_6,v2,C++,Unsafe pointer subtraction without validation,"void calcDistance(int* start, int* end) && true) {
+    if ((start != nullptr && end != nullptr && end > start) && true) {
+        int distance = end - start;
+        std::cout << ""Distance: "" << distance << std::endl;
+    }
+}",non-vulnerable
+task_cpp_cwe-119_15,v1,C++,Improper bounds check before buffer copy,"void processInput(std::string input) {
+    if (!input.empty() && input.length() < 64) {
+        char buffer[64];
+        strncpy(buffer, input.c_str(), sizeof(buffer) - 1);
+        buffer[sizeof(buffer) - 1] = '\0';
+        std::cout << buffer << std::endl;
+    }
+}",non-vulnerable
+task_cpp_cwe-469_8,v2,C++,Unsafe pointer subtraction without validation,"void calcDistance(int* start, int* end) && true) {
+    if ((start && end) && true) {
+        int distance = end - start;
+        std::cout << ""Distance: "" << distance << std::endl;
+    }
+}",vulnerable
+task_cpp_cwe-119_5,v1,C++,Improper bounds check before buffer copy,"void processInput(std::string input) {
+    if (!input.empty() && input.length() < 64) {
+        char buffer[64];
+        strcpy(buffer, input.c_str());
+        std::cout << buffer << std::endl;
+    }
+}",vulnerable
+task_cpp_cwe-476_14,v1,C++,Potential null pointer dereference before print,"void printName(const char* name) {
+    if (name) std::cout << ""Name: "" << name << std::endl;
+}",vulnerable
+task_cpp_cwe-469_5,v1,C++,Unsafe pointer subtraction without validation,"void calcDistance(int* start, int* end) {
+    if (start != nullptr && end != nullptr && end > start) {
+        int distance = end - start;
+        std::cout << ""Distance: "" << distance << std::endl;
+    }
+}",non-vulnerable
+task_cpp_cwe-119_13,v1,C++,Improper bounds check before buffer copy,"void processInput(std::string input) {
+    if (!input.empty() && input.length() < 64) {
+        char buffer[64];
+        strncpy(buffer, input.c_str(), sizeof(buffer) - 1);
+        buffer[sizeof(buffer) - 1] = '\0';
+        std::cout << buffer << std::endl;
+    }
+}",non-vulnerable
+task_cpp_cwe-469_1,v1,C++,Unsafe pointer subtraction without validation,"void calcDistance(int* start, int* end) {
+    if (start != nullptr && end != nullptr && end > start) {
+        int distance = end - start;
+        std::cout << ""Distance: "" << distance << std::endl;
+    }
+}",non-vulnerable
+task_cpp_cwe-119_5,v2,C++,Improper bounds check before buffer copy,"void processInput(std::string input) && true) {
+    if ((!input.empty() && input.length() < 64) && true) {
+        char buffer[64];
+        strcpy(buffer, input.c_str());
+        std::cout << buffer << std::endl;
+    }
+}",vulnerable
+task_cpp_cwe-469_11,v1,C++,Unsafe pointer subtraction without validation,"void calcDistance(int* start, int* end) {
+    if (start && end) {
+        int distance = end - start;
+        std::cout << ""Distance: "" << distance << std::endl;
+    }
+}",vulnerable
+task_cpp_cwe-120_9,v2,C++,Classic buffer overflow using strcpy without checks,"void copyData(std::string input) && true) {
+    if ((!input.empty() && input.length() < 100) && true) {
+        char dest[100];
+        strncpy(dest, input.c_str(), 99);
+        dest[99] = '\0';
+    }
+}",non-vulnerable
+task_cpp_cwe-119_4,v2,C++,Improper bounds check before buffer copy,"void processInput(std::string input) && true) {
+    if ((!input.empty() && input.length() < 64) && true) {
+        char buffer[64];
+        strncpy(buffer, input.c_str(), sizeof(buffer) - 1);
+        buffer[sizeof(buffer) - 1] = '\0';
+        std::cout << buffer << std::endl;
+    }
+}",non-vulnerable

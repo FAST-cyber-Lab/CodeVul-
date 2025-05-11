@@ -1,0 +1,244 @@
+task_id,variant,language,description,code,label
+task_go_smell_1,v1,Go,Long Function,"func process() {
+  a := 10
+  b := 20
+  c := a + b
+  // many lines...
+  fmt.Println(c)
+}",smelly
+task_go_smell_1,v2,Go,Long Function,"func add(a, b int) int {
+  return a + b
+}
+func process() {
+  c := add(10, 20)
+  fmt.Println(c)
+}",clean
+task_go_smell_2,v1,Go,Duplicate Code,"func drawCircle() {
+  x, y := 10, 20
+  fmt.Printf(""Circle at %d,%d\n"", x, y)
+}
+func drawSquare() {
+  x, y := 10, 20
+  fmt.Printf(""Square at %d,%d\n"", x, y)
+}",smelly
+task_go_smell_2,v2,Go,Duplicate Code,"func drawShape(name string, x, y int) {
+  fmt.Printf(""%s at %d,%d\n"", name, x, y)
+}
+func drawCircle() { drawShape(""Circle"", 10, 20) }
+func drawSquare() { drawShape(""Square"", 10, 20) }",clean
+task_go_smell_3,v1,Go,Magic Numbers,area := 3.14 * r * r,smelly
+task_go_smell_3,v2,Go,Magic Numbers,"const PI = 3.14
+area := PI * r * r",clean
+task_go_smell_4,v1,Go,Too Many Parameters,"func createUser(name string, age int, email string, phone string, address string) {}",smelly
+task_go_smell_4,v2,Go,Too Many Parameters,"type User struct {
+  Name, Email, Phone, Address string
+  Age int
+}
+func createUser(u User) {}",clean
+task_go_smell_5,v1,Go,Global Variable,"var counter int
+func increment() {
+  counter++
+}",smelly
+task_go_smell_5,v2,Go,Global Variable,"func increment(counter int) int {
+  return counter + 1
+}",clean
+task_go_smell_6,v1,Go,Dead Code,"func run() {
+  return
+  fmt.Println(""Unreachable"")
+}",smelly
+task_go_smell_6,v2,Go,Dead Code,"func run() {
+  return
+}",clean
+task_go_smell_7,v1,Go,Duplicated Logic,"if a > 0 {
+  x = a
+} else {
+  x = -a
+}
+if a > 0 {
+  y = a
+} else {
+  y = -a
+}",smelly
+task_go_smell_7,v2,Go,Duplicated Logic,"func abs(n int) int {
+  if n > 0 {
+    return n
+  }
+  return -n
+}
+x = abs(a)
+y = abs(a)",clean
+task_go_smell_8,v1,Go,Hardcoded Path,"content, _ := os.ReadFile(""/user/data/file.txt"")",smelly
+task_go_smell_8,v2,Go,Hardcoded Path,"const FilePath = ""/user/data/file.txt""
+content, _ := os.ReadFile(FilePath)",clean
+task_go_smell_9,v1,Go,Improper Naming,func DoSomething() {},smelly
+task_go_smell_9,v2,Go,Improper Naming,func doSomething() {},clean
+task_go_smell_10,v1,Go,Poor Commenting,"func add(a, b int) int {
+  // math stuff
+  return a + b
+}",smelly
+task_go_smell_10,v2,Go,Poor Commenting,"func add(a, b int) int {
+  // returns the sum of two integers
+  return a + b
+}",clean
+task_go_smell_11,v1,Go,Long Function (variation 2),"func process() {
+  a := 10
+  b := 20
+  c := a + b
+  // many lines...
+  fmt.Println(c)
+}",smelly
+task_go_smell_11,v2,Go,Long Function (variation 2),"func add(a, b int) int {
+  return a + b
+}
+func process() {
+  c := add(10, 20)
+  fmt.Println(c)
+}",clean
+task_go_smell_12,v1,Go,Duplicate Code (variation 2),"func drawCircle() {
+  x, y := 10, 20
+  fmt.Printf(""Circle at %d,%d\n"", x, y)
+}
+func drawSquare() {
+  x, y := 10, 20
+  fmt.Printf(""Square at %d,%d\n"", x, y)
+}",smelly
+task_go_smell_12,v2,Go,Duplicate Code (variation 2),"func drawShape(name string, x, y int) {
+  fmt.Printf(""%s at %d,%d\n"", name, x, y)
+}
+func drawCircle() { drawShape(""Circle"", 10, 20) }
+func drawSquare() { drawShape(""Square"", 10, 20) }",clean
+task_go_smell_13,v1,Go,Magic Numbers (variation 2),area := 3.14 * r * r,smelly
+task_go_smell_13,v2,Go,Magic Numbers (variation 2),"const PI = 3.14
+area := PI * r * r",clean
+task_go_smell_14,v1,Go,Too Many Parameters (variation 2),"func createUser(name string, age int, email string, phone string, address string) {}",smelly
+task_go_smell_14,v2,Go,Too Many Parameters (variation 2),"type User struct {
+  Name, Email, Phone, Address string
+  Age int
+}
+func createUser(u User) {}",clean
+task_go_smell_15,v1,Go,Global Variable (variation 2),"var counter int
+func increment() {
+  counter++
+}",smelly
+task_go_smell_15,v2,Go,Global Variable (variation 2),"func increment(counter int) int {
+  return counter + 1
+}",clean
+task_go_smell_16,v1,Go,Dead Code (variation 2),"func run() {
+  return
+  fmt.Println(""Unreachable"")
+}",smelly
+task_go_smell_16,v2,Go,Dead Code (variation 2),"func run() {
+  return
+}",clean
+task_go_smell_17,v1,Go,Duplicated Logic (variation 2),"if a > 0 {
+  x = a
+} else {
+  x = -a
+}
+if a > 0 {
+  y = a
+} else {
+  y = -a
+}",smelly
+task_go_smell_17,v2,Go,Duplicated Logic (variation 2),"func abs(n int) int {
+  if n > 0 {
+    return n
+  }
+  return -n
+}
+x = abs(a)
+y = abs(a)",clean
+task_go_smell_18,v1,Go,Hardcoded Path (variation 2),"content, _ := os.ReadFile(""/user/data/file.txt"")",smelly
+task_go_smell_18,v2,Go,Hardcoded Path (variation 2),"const FilePath = ""/user/data/file.txt""
+content, _ := os.ReadFile(FilePath)",clean
+task_go_smell_19,v1,Go,Improper Naming (variation 2),func DoSomething() {},smelly
+task_go_smell_19,v2,Go,Improper Naming (variation 2),func doSomething() {},clean
+task_go_smell_20,v1,Go,Poor Commenting (variation 2),"func add(a, b int) int {
+  // math stuff
+  return a + b
+}",smelly
+task_go_smell_20,v2,Go,Poor Commenting (variation 2),"func add(a, b int) int {
+  // returns the sum of two integers
+  return a + b
+}",clean
+task_go_smell_21,v1,Go,Long Function (variation 3),"func process() {
+  a := 10
+  b := 20
+  c := a + b
+  // many lines...
+  fmt.Println(c)
+}",smelly
+task_go_smell_21,v2,Go,Long Function (variation 3),"func add(a, b int) int {
+  return a + b
+}
+func process() {
+  c := add(10, 20)
+  fmt.Println(c)
+}",clean
+task_go_smell_22,v1,Go,Duplicate Code (variation 3),"func drawCircle() {
+  x, y := 10, 20
+  fmt.Printf(""Circle at %d,%d\n"", x, y)
+}
+func drawSquare() {
+  x, y := 10, 20
+  fmt.Printf(""Square at %d,%d\n"", x, y)
+}",smelly
+task_go_smell_22,v2,Go,Duplicate Code (variation 3),"func drawShape(name string, x, y int) {
+  fmt.Printf(""%s at %d,%d\n"", name, x, y)
+}
+func drawCircle() { drawShape(""Circle"", 10, 20) }
+func drawSquare() { drawShape(""Square"", 10, 20) }",clean
+task_go_smell_23,v1,Go,Magic Numbers (variation 3),area := 3.14 * r * r,smelly
+task_go_smell_23,v2,Go,Magic Numbers (variation 3),"const PI = 3.14
+area := PI * r * r",clean
+task_go_smell_24,v1,Go,Too Many Parameters (variation 3),"func createUser(name string, age int, email string, phone string, address string) {}",smelly
+task_go_smell_24,v2,Go,Too Many Parameters (variation 3),"type User struct {
+  Name, Email, Phone, Address string
+  Age int
+}
+func createUser(u User) {}",clean
+task_go_smell_25,v1,Go,Global Variable (variation 3),"var counter int
+func increment() {
+  counter++
+}",smelly
+task_go_smell_25,v2,Go,Global Variable (variation 3),"func increment(counter int) int {
+  return counter + 1
+}",clean
+task_go_smell_26,v1,Go,Dead Code (variation 3),"func run() {
+  return
+  fmt.Println(""Unreachable"")
+}",smelly
+task_go_smell_26,v2,Go,Dead Code (variation 3),"func run() {
+  return
+}",clean
+task_go_smell_27,v1,Go,Duplicated Logic (variation 3),"if a > 0 {
+  x = a
+} else {
+  x = -a
+}
+if a > 0 {
+  y = a
+} else {
+  y = -a
+}",smelly
+task_go_smell_27,v2,Go,Duplicated Logic (variation 3),"func abs(n int) int {
+  if n > 0 {
+    return n
+  }
+  return -n
+}
+x = abs(a)
+y = abs(a)",clean
+task_go_smell_28,v1,Go,Hardcoded Path (variation 3),"content, _ := os.ReadFile(""/user/data/file.txt"")",smelly
+task_go_smell_28,v2,Go,Hardcoded Path (variation 3),"const FilePath = ""/user/data/file.txt""
+content, _ := os.ReadFile(FilePath)",clean
+task_go_smell_29,v1,Go,Improper Naming (variation 3),func DoSomething() {},smelly
+task_go_smell_29,v2,Go,Improper Naming (variation 3),func doSomething() {},clean
+task_go_smell_30,v1,Go,Poor Commenting (variation 3),"func add(a, b int) int {
+  // math stuff
+  return a + b
+}",smelly
+task_go_smell_30,v2,Go,Poor Commenting (variation 3),"func add(a, b int) int {
+  // returns the sum of two integers
+  return a + b
+}",clean

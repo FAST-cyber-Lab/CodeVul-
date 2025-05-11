@@ -1,0 +1,223 @@
+task_id,variant,language,description,code,label
+task_ruby_smell_1,v1,Ruby,Long Method,"def process
+  a = 10
+  b = 20
+  c = a + b
+  # many lines...
+  puts c
+end",smelly
+task_ruby_smell_1,v2,Ruby,Long Method,"def add(a, b)
+  a + b
+end
+def process
+  c = add(10, 20)
+  puts c
+end",clean
+task_ruby_smell_2,v1,Ruby,Duplicate Code,"def draw_circle
+  x, y = 10, 20
+  puts ""Circle at \#{x},\#{y}""
+end
+def draw_square
+  x, y = 10, 20
+  puts ""Square at \#{x},\#{y}""
+end",smelly
+task_ruby_smell_2,v2,Ruby,Duplicate Code,"def draw_shape(shape, x, y)
+  puts ""\#{shape} at \#{x},\#{y}""
+end
+def draw_circle
+  draw_shape(""Circle"", 10, 20)
+end
+def draw_square
+  draw_shape(""Square"", 10, 20)
+end",clean
+task_ruby_smell_3,v1,Ruby,Magic Numbers,area = 3.14 * r * r,smelly
+task_ruby_smell_3,v2,Ruby,Magic Numbers,"PI = 3.14
+area = PI * r * r",clean
+task_ruby_smell_4,v1,Ruby,Too Many Parameters,"def register(name, age, email, phone, address)
+end",smelly
+task_ruby_smell_4,v2,Ruby,Too Many Parameters,"def register(user)
+end",clean
+task_ruby_smell_5,v1,Ruby,Global Variable,"$counter = 0
+def increment
+  $counter += 1
+end",smelly
+task_ruby_smell_5,v2,Ruby,Global Variable,"def increment(counter)
+  counter + 1
+end",clean
+task_ruby_smell_6,v1,Ruby,Dead Code,"def run
+  return
+  puts ""Unreachable""
+end",smelly
+task_ruby_smell_6,v2,Ruby,Dead Code,"def run
+  return
+end",clean
+task_ruby_smell_7,v1,Ruby,Duplicated Logic,"x = a > 0 ? a : -a
+y = a > 0 ? a : -a",smelly
+task_ruby_smell_7,v2,Ruby,Duplicated Logic,"def abs_val(n)
+  n > 0 ? n : -n
+end
+x = abs_val(a)
+y = abs_val(a)",clean
+task_ruby_smell_8,v1,Ruby,Hardcoded Path,content = File.read('/home/data/file.txt'),smelly
+task_ruby_smell_8,v2,Ruby,Hardcoded Path,"FILE_PATH = '/home/data/file.txt'
+content = File.read(FILE_PATH)",clean
+task_ruby_smell_9,v1,Ruby,Improper Naming,"def DoSomething
+end",smelly
+task_ruby_smell_9,v2,Ruby,Improper Naming,"def do_something
+end",clean
+task_ruby_smell_10,v1,Ruby,Poor Commenting,"def add(a, b)
+  # math
+  a + b
+end",smelly
+task_ruby_smell_10,v2,Ruby,Poor Commenting,"def add(a, b)
+  # returns the sum of two numbers
+  a + b
+end",clean
+task_ruby_smell_11,v1,Ruby,Long Method (variation 2),"def process
+  a = 10
+  b = 20
+  c = a + b
+  # many lines...
+  puts c
+end",smelly
+task_ruby_smell_11,v2,Ruby,Long Method (variation 2),"def add(a, b)
+  a + b
+end
+def process
+  c = add(10, 20)
+  puts c
+end",clean
+task_ruby_smell_12,v1,Ruby,Duplicate Code (variation 2),"def draw_circle
+  x, y = 10, 20
+  puts ""Circle at \#{x},\#{y}""
+end
+def draw_square
+  x, y = 10, 20
+  puts ""Square at \#{x},\#{y}""
+end",smelly
+task_ruby_smell_12,v2,Ruby,Duplicate Code (variation 2),"def draw_shape(shape, x, y)
+  puts ""\#{shape} at \#{x},\#{y}""
+end
+def draw_circle
+  draw_shape(""Circle"", 10, 20)
+end
+def draw_square
+  draw_shape(""Square"", 10, 20)
+end",clean
+task_ruby_smell_13,v1,Ruby,Magic Numbers (variation 2),area = 3.14 * r * r,smelly
+task_ruby_smell_13,v2,Ruby,Magic Numbers (variation 2),"PI = 3.14
+area = PI * r * r",clean
+task_ruby_smell_14,v1,Ruby,Too Many Parameters (variation 2),"def register(name, age, email, phone, address)
+end",smelly
+task_ruby_smell_14,v2,Ruby,Too Many Parameters (variation 2),"def register(user)
+end",clean
+task_ruby_smell_15,v1,Ruby,Global Variable (variation 2),"$counter = 0
+def increment
+  $counter += 1
+end",smelly
+task_ruby_smell_15,v2,Ruby,Global Variable (variation 2),"def increment(counter)
+  counter + 1
+end",clean
+task_ruby_smell_16,v1,Ruby,Dead Code (variation 2),"def run
+  return
+  puts ""Unreachable""
+end",smelly
+task_ruby_smell_16,v2,Ruby,Dead Code (variation 2),"def run
+  return
+end",clean
+task_ruby_smell_17,v1,Ruby,Duplicated Logic (variation 2),"x = a > 0 ? a : -a
+y = a > 0 ? a : -a",smelly
+task_ruby_smell_17,v2,Ruby,Duplicated Logic (variation 2),"def abs_val(n)
+  n > 0 ? n : -n
+end
+x = abs_val(a)
+y = abs_val(a)",clean
+task_ruby_smell_18,v1,Ruby,Hardcoded Path (variation 2),content = File.read('/home/data/file.txt'),smelly
+task_ruby_smell_18,v2,Ruby,Hardcoded Path (variation 2),"FILE_PATH = '/home/data/file.txt'
+content = File.read(FILE_PATH)",clean
+task_ruby_smell_19,v1,Ruby,Improper Naming (variation 2),"def DoSomething
+end",smelly
+task_ruby_smell_19,v2,Ruby,Improper Naming (variation 2),"def do_something
+end",clean
+task_ruby_smell_20,v1,Ruby,Poor Commenting (variation 2),"def add(a, b)
+  # math
+  a + b
+end",smelly
+task_ruby_smell_20,v2,Ruby,Poor Commenting (variation 2),"def add(a, b)
+  # returns the sum of two numbers
+  a + b
+end",clean
+task_ruby_smell_21,v1,Ruby,Long Method (variation 3),"def process
+  a = 10
+  b = 20
+  c = a + b
+  # many lines...
+  puts c
+end",smelly
+task_ruby_smell_21,v2,Ruby,Long Method (variation 3),"def add(a, b)
+  a + b
+end
+def process
+  c = add(10, 20)
+  puts c
+end",clean
+task_ruby_smell_22,v1,Ruby,Duplicate Code (variation 3),"def draw_circle
+  x, y = 10, 20
+  puts ""Circle at \#{x},\#{y}""
+end
+def draw_square
+  x, y = 10, 20
+  puts ""Square at \#{x},\#{y}""
+end",smelly
+task_ruby_smell_22,v2,Ruby,Duplicate Code (variation 3),"def draw_shape(shape, x, y)
+  puts ""\#{shape} at \#{x},\#{y}""
+end
+def draw_circle
+  draw_shape(""Circle"", 10, 20)
+end
+def draw_square
+  draw_shape(""Square"", 10, 20)
+end",clean
+task_ruby_smell_23,v1,Ruby,Magic Numbers (variation 3),area = 3.14 * r * r,smelly
+task_ruby_smell_23,v2,Ruby,Magic Numbers (variation 3),"PI = 3.14
+area = PI * r * r",clean
+task_ruby_smell_24,v1,Ruby,Too Many Parameters (variation 3),"def register(name, age, email, phone, address)
+end",smelly
+task_ruby_smell_24,v2,Ruby,Too Many Parameters (variation 3),"def register(user)
+end",clean
+task_ruby_smell_25,v1,Ruby,Global Variable (variation 3),"$counter = 0
+def increment
+  $counter += 1
+end",smelly
+task_ruby_smell_25,v2,Ruby,Global Variable (variation 3),"def increment(counter)
+  counter + 1
+end",clean
+task_ruby_smell_26,v1,Ruby,Dead Code (variation 3),"def run
+  return
+  puts ""Unreachable""
+end",smelly
+task_ruby_smell_26,v2,Ruby,Dead Code (variation 3),"def run
+  return
+end",clean
+task_ruby_smell_27,v1,Ruby,Duplicated Logic (variation 3),"x = a > 0 ? a : -a
+y = a > 0 ? a : -a",smelly
+task_ruby_smell_27,v2,Ruby,Duplicated Logic (variation 3),"def abs_val(n)
+  n > 0 ? n : -n
+end
+x = abs_val(a)
+y = abs_val(a)",clean
+task_ruby_smell_28,v1,Ruby,Hardcoded Path (variation 3),content = File.read('/home/data/file.txt'),smelly
+task_ruby_smell_28,v2,Ruby,Hardcoded Path (variation 3),"FILE_PATH = '/home/data/file.txt'
+content = File.read(FILE_PATH)",clean
+task_ruby_smell_29,v1,Ruby,Improper Naming (variation 3),"def DoSomething
+end",smelly
+task_ruby_smell_29,v2,Ruby,Improper Naming (variation 3),"def do_something
+end",clean
+task_ruby_smell_30,v1,Ruby,Poor Commenting (variation 3),"def add(a, b)
+  # math
+  a + b
+end",smelly
+task_ruby_smell_30,v2,Ruby,Poor Commenting (variation 3),"def add(a, b)
+  # returns the sum of two numbers
+  a + b
+end",clean

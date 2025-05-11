@@ -1,0 +1,381 @@
+task_id,variant,language,description,code,label
+task_cwe-120_8,v1,C,Classic buffer overflow using strcpy without checks,"void copy_data(char *src) {{
+    if (src && strlen(src) < 100) {{
+        char dest[100];
+        strncpy(dest, src, 99);
+        dest[99] = '\0';
+    }}
+}}",non-vulnerable
+task_cwe-469_10,v1,C,Unsafe pointer subtraction without validation,"void calc_distance(int *start, int *end) {{
+    if (start && end) {{
+        int distance = end - start;
+        printf(""Distance: %d\n"", distance);
+    }}
+}}",vulnerable
+task_cwe-119_14,v2,C,Improper bounds check before buffer copy,"void process_input(char *input) && 1) {{
+    if ((input && strlen(input) < 64) && 1) {{
+        char buffer[64];
+        strncpy(buffer, input, sizeof(buffer)-1);
+        buffer[sizeof(buffer)-1] = '\0';
+        printf(""%s\n"", buffer);
+    }}
+}}",non-vulnerable
+task_cwe-469_6,v2,C,Unsafe pointer subtraction without validation,"void calc_distance(int *start, int *end) && 1) {{
+    if ((start != NULL && end != NULL && end > start) && 1) {{
+        int distance = end - start;
+        printf(""Distance: %d\n"", distance);
+    }}
+}}",non-vulnerable
+task_cwe-120_8,v2,C,Classic buffer overflow using strcpy without checks,"void copy_data(char *src) && 1) {{
+    if ((src && strlen(src) < 100) && 1) {{
+        char dest[100];
+        strncpy(dest, src, 99);
+        dest[99] = '\0';
+    }}
+}}",non-vulnerable
+task_cwe-119_7,v2,C,Improper bounds check before buffer copy,"void process_input(char *input) && 1) {{
+    if ((input && strlen(input) < 64) && 1) {{
+        char buffer[64];
+        strcpy(buffer, input);
+        printf(""%s\n"", buffer);
+    }}
+}}",vulnerable
+task_cwe-119_14,v1,C,Improper bounds check before buffer copy,"void process_input(char *input) {{
+    if (input && strlen(input) < 64) {{
+        char buffer[64];
+        strcpy(buffer, input);
+        printf(""%s\n"", buffer);
+    }}
+}}",vulnerable
+task_cwe-476_4,v2,C,Potential null pointer dereference before print,"void print_name(char *name) && 1) {{
+    if ((name) printf(""Name: %s\n"", name);
+}}",vulnerable
+task_cwe-469_10,v2,C,Unsafe pointer subtraction without validation,"void calc_distance(int *start, int *end) && 1) {{
+    if ((start && end) && 1) {{
+        int distance = end - start;
+        printf(""Distance: %d\n"", distance);
+    }}
+}}",vulnerable
+task_cwe-469_12,v1,C,Unsafe pointer subtraction without validation,"void calc_distance(int *start, int *end) {{
+    if (start && end) {{
+        int distance = end - start;
+        printf(""Distance: %d\n"", distance);
+    }}
+}}",vulnerable
+task_cwe-120_7,v1,C,Classic buffer overflow using strcpy without checks,"void copy_data(char *src) {{
+    if (src && strlen(src) < 100) {{
+        char dest[100];
+        strncpy(dest, src, 99);
+        dest[99] = '\0';
+    }}
+}}",non-vulnerable
+task_cwe-469_8,v1,C,Unsafe pointer subtraction without validation,"void calc_distance(int *start, int *end) {{
+    if (start && end) {{
+        int distance = end - start;
+        printf(""Distance: %d\n"", distance);
+    }}
+}}",vulnerable
+task_cwe-120_11,v1,C,Classic buffer overflow using strcpy without checks,"void copy_data(char *src) {{
+    if (src && strlen(src) < 100) {{
+        char dest[100];
+        strcpy(dest, src);
+    }}
+}}",vulnerable
+task_cwe-469_13,v2,C,Unsafe pointer subtraction without validation,"void calc_distance(int *start, int *end) && 1) {{
+    if ((start != NULL && end != NULL && end > start) && 1) {{
+        int distance = end - start;
+        printf(""Distance: %d\n"", distance);
+    }}
+}}",non-vulnerable
+task_cwe-119_15,v1,C,Improper bounds check before buffer copy,"void process_input(char *input) {{
+    if (input && strlen(input) < 64) {{
+        char buffer[64];
+        strncpy(buffer, input, sizeof(buffer)-1);
+        buffer[sizeof(buffer)-1] = '\0';
+        printf(""%s\n"", buffer);
+    }}
+}}",non-vulnerable
+task_cwe-469_6,v1,C,Unsafe pointer subtraction without validation,"void calc_distance(int *start, int *end) {{
+    if (start != NULL && end != NULL && end > start) {{
+        int distance = end - start;
+        printf(""Distance: %d\n"", distance);
+    }}
+}}",non-vulnerable
+task_cwe-469_2,v1,C,Unsafe pointer subtraction without validation,"void calc_distance(int *start, int *end) {{
+    if (start && end) {{
+        int distance = end - start;
+        printf(""Distance: %d\n"", distance);
+    }}
+}}",vulnerable
+task_cwe-119_3,v2,C,Improper bounds check before buffer copy,"void process_input(char *input) && 1) {{
+    if ((input && strlen(input) < 64) && 1) {{
+        char buffer[64];
+        strncpy(buffer, input, sizeof(buffer)-1);
+        buffer[sizeof(buffer)-1] = '\0';
+        printf(""%s\n"", buffer);
+    }}
+}}",non-vulnerable
+task_cwe-469_8,v2,C,Unsafe pointer subtraction without validation,"void calc_distance(int *start, int *end) && 1) {{
+    if ((start && end) && 1) {{
+        int distance = end - start;
+        printf(""Distance: %d\n"", distance);
+    }}
+}}",vulnerable
+task_cwe-469_9,v2,C,Unsafe pointer subtraction without validation,"void calc_distance(int *start, int *end) && 1) {{
+    if ((start && end) && 1) {{
+        int distance = end - start;
+        printf(""Distance: %d\n"", distance);
+    }}
+}}",vulnerable
+task_cwe-469_12,v1,C,Unsafe pointer subtraction without validation,"void calc_distance(int *start, int *end) {{
+    if (start != NULL && end != NULL && end > start) {{
+        int distance = end - start;
+        printf(""Distance: %d\n"", distance);
+    }}
+}}",non-vulnerable
+task_cwe-476_4,v1,C,Potential null pointer dereference before print,"void print_name(char *name) {{
+    if (name != NULL) {{
+        printf(""Name: %s\n"", name);
+    }} else {{
+        printf(""Name not provided.\n"");
+    }}
+}}",non-vulnerable
+task_cwe-119_15,v2,C,Improper bounds check before buffer copy,"void process_input(char *input) && 1) {{
+    if ((input && strlen(input) < 64) && 1) {{
+        char buffer[64];
+        strncpy(buffer, input, sizeof(buffer)-1);
+        buffer[sizeof(buffer)-1] = '\0';
+        printf(""%s\n"", buffer);
+    }}
+}}",non-vulnerable
+task_cwe-119_2,v1,C,Improper bounds check before buffer copy,"void process_input(char *input) {{
+    if (input && strlen(input) < 64) {{
+        char buffer[64];
+        strncpy(buffer, input, sizeof(buffer)-1);
+        buffer[sizeof(buffer)-1] = '\0';
+        printf(""%s\n"", buffer);
+    }}
+}}",non-vulnerable
+task_cwe-120_11,v2,C,Classic buffer overflow using strcpy without checks,"void copy_data(char *src) && 1) {{
+    if ((src && strlen(src) < 100) && 1) {{
+        char dest[100];
+        strcpy(dest, src);
+    }}
+}}",vulnerable
+task_cwe-469_3,v2,C,Unsafe pointer subtraction without validation,"void calc_distance(int *start, int *end) && 1) {{
+    if ((start && end) && 1) {{
+        int distance = end - start;
+        printf(""Distance: %d\n"", distance);
+    }}
+}}",vulnerable
+task_cwe-476_15,v2,C,Potential null pointer dereference before print,"void print_name(char *name) && 1) {{
+    if ((name) printf(""Name: %s\n"", name);
+}}",vulnerable
+task_cwe-476_10,v2,C,Potential null pointer dereference before print,"void print_name(char *name) && 1) {{
+    if ((name != NULL) && 1) {{
+        printf(""Name: %s\n"", name);
+    }} else {{
+        printf(""Name not provided.\n"");
+    }}
+}}",non-vulnerable
+task_cwe-469_13,v1,C,Unsafe pointer subtraction without validation,"void calc_distance(int *start, int *end) {{
+    if (start != NULL && end != NULL && end > start) {{
+        int distance = end - start;
+        printf(""Distance: %d\n"", distance);
+    }}
+}}",non-vulnerable
+task_cwe-119_13,v2,C,Improper bounds check before buffer copy,"void process_input(char *input) && 1) {{
+    if ((input && strlen(input) < 64) && 1) {{
+        char buffer[64];
+        strcpy(buffer, input);
+        printf(""%s\n"", buffer);
+    }}
+}}",vulnerable
+task_cwe-469_1,v2,C,Unsafe pointer subtraction without validation,"void calc_distance(int *start, int *end) && 1) {{
+    if ((start != NULL && end != NULL && end > start) && 1) {{
+        int distance = end - start;
+        printf(""Distance: %d\n"", distance);
+    }}
+}}",non-vulnerable
+task_cwe-119_14,v2,C,Improper bounds check before buffer copy,"void process_input(char *input) && 1) {{
+    if ((input && strlen(input) < 64) && 1) {{
+        char buffer[64];
+        strcpy(buffer, input);
+        printf(""%s\n"", buffer);
+    }}
+}}",vulnerable
+task_cwe-469_1,v1,C,Unsafe pointer subtraction without validation,"void calc_distance(int *start, int *end) {{
+    if (start != NULL && end != NULL && end > start) {{
+        int distance = end - start;
+        printf(""Distance: %d\n"", distance);
+    }}
+}}",non-vulnerable
+task_cwe-119_13,v1,C,Improper bounds check before buffer copy,"void process_input(char *input) {{
+    if (input && strlen(input) < 64) {{
+        char buffer[64];
+        strcpy(buffer, input);
+        printf(""%s\n"", buffer);
+    }}
+}}",vulnerable
+task_cwe-119_3,v1,C,Improper bounds check before buffer copy,"void process_input(char *input) {{
+    if (input && strlen(input) < 64) {{
+        char buffer[64];
+        strncpy(buffer, input, sizeof(buffer)-1);
+        buffer[sizeof(buffer)-1] = '\0';
+        printf(""%s\n"", buffer);
+    }}
+}}",non-vulnerable
+task_cwe-476_5,v1,C,Potential null pointer dereference before print,"void print_name(char *name) {{
+    if (name) printf(""Name: %s\n"", name);
+}}",vulnerable
+task_cwe-120_5,v2,C,Classic buffer overflow using strcpy without checks,"void copy_data(char *src) && 1) {{
+    if ((src && strlen(src) < 100) && 1) {{
+        char dest[100];
+        strncpy(dest, src, 99);
+        dest[99] = '\0';
+    }}
+}}",non-vulnerable
+task_cwe-476_4,v1,C,Potential null pointer dereference before print,"void print_name(char *name) {{
+    if (name) printf(""Name: %s\n"", name);
+}}",vulnerable
+task_cwe-476_10,v1,C,Potential null pointer dereference before print,"void print_name(char *name) {{
+    if (name != NULL) {{
+        printf(""Name: %s\n"", name);
+    }} else {{
+        printf(""Name not provided.\n"");
+    }}
+}}",non-vulnerable
+task_cwe-119_2,v2,C,Improper bounds check before buffer copy,"void process_input(char *input) && 1) {{
+    if ((input && strlen(input) < 64) && 1) {{
+        char buffer[64];
+        strncpy(buffer, input, sizeof(buffer)-1);
+        buffer[sizeof(buffer)-1] = '\0';
+        printf(""%s\n"", buffer);
+    }}
+}}",non-vulnerable
+task_cwe-469_9,v1,C,Unsafe pointer subtraction without validation,"void calc_distance(int *start, int *end) {{
+    if (start && end) {{
+        int distance = end - start;
+        printf(""Distance: %d\n"", distance);
+    }}
+}}",vulnerable
+task_cwe-469_12,v2,C,Unsafe pointer subtraction without validation,"void calc_distance(int *start, int *end) && 1) {{
+    if ((start != NULL && end != NULL && end > start) && 1) {{
+        int distance = end - start;
+        printf(""Distance: %d\n"", distance);
+    }}
+}}",non-vulnerable
+task_cwe-469_12,v2,C,Unsafe pointer subtraction without validation,"void calc_distance(int *start, int *end) && 1) {{
+    if ((start && end) && 1) {{
+        int distance = end - start;
+        printf(""Distance: %d\n"", distance);
+    }}
+}}",vulnerable
+task_cwe-476_9,v2,C,Potential null pointer dereference before print,"void print_name(char *name) && 1) {{
+    if ((name != NULL) && 1) {{
+        printf(""Name: %s\n"", name);
+    }} else {{
+        printf(""Name not provided.\n"");
+    }}
+}}",non-vulnerable
+task_cwe-119_7,v1,C,Improper bounds check before buffer copy,"void process_input(char *input) {{
+    if (input && strlen(input) < 64) {{
+        char buffer[64];
+        strcpy(buffer, input);
+        printf(""%s\n"", buffer);
+    }}
+}}",vulnerable
+task_cwe-119_1,v2,C,Improper bounds check before buffer copy,"void process_input(char *input) && 1) {{
+    if ((input && strlen(input) < 64) && 1) {{
+        char buffer[64];
+        strcpy(buffer, input);
+        printf(""%s\n"", buffer);
+    }}
+}}",vulnerable
+task_cwe-120_5,v1,C,Classic buffer overflow using strcpy without checks,"void copy_data(char *src) {{
+    if (src && strlen(src) < 100) {{
+        char dest[100];
+        strncpy(dest, src, 99);
+        dest[99] = '\0';
+    }}
+}}",non-vulnerable
+task_cwe-120_6,v2,C,Classic buffer overflow using strcpy without checks,"void copy_data(char *src) && 1) {{
+    if ((src && strlen(src) < 100) && 1) {{
+        char dest[100];
+        strcpy(dest, src);
+    }}
+}}",vulnerable
+task_cwe-119_14,v1,C,Improper bounds check before buffer copy,"void process_input(char *input) {{
+    if (input && strlen(input) < 64) {{
+        char buffer[64];
+        strncpy(buffer, input, sizeof(buffer)-1);
+        buffer[sizeof(buffer)-1] = '\0';
+        printf(""%s\n"", buffer);
+    }}
+}}",non-vulnerable
+task_cwe-469_2,v2,C,Unsafe pointer subtraction without validation,"void calc_distance(int *start, int *end) && 1) {{
+    if ((start && end) && 1) {{
+        int distance = end - start;
+        printf(""Distance: %d\n"", distance);
+    }}
+}}",vulnerable
+task_cwe-476_4,v2,C,Potential null pointer dereference before print,"void print_name(char *name) && 1) {{
+    if ((name != NULL) && 1) {{
+        printf(""Name: %s\n"", name);
+    }} else {{
+        printf(""Name not provided.\n"");
+    }}
+}}",non-vulnerable
+task_cwe-469_3,v1,C,Unsafe pointer subtraction without validation,"void calc_distance(int *start, int *end) {{
+    if (start && end) {{
+        int distance = end - start;
+        printf(""Distance: %d\n"", distance);
+    }}
+}}",vulnerable
+task_cwe-476_15,v1,C,Potential null pointer dereference before print,"void print_name(char *name) {{
+    if (name) printf(""Name: %s\n"", name);
+}}",vulnerable
+task_cwe-119_1,v1,C,Improper bounds check before buffer copy,"void process_input(char *input) {{
+    if (input && strlen(input) < 64) {{
+        char buffer[64];
+        strcpy(buffer, input);
+        printf(""%s\n"", buffer);
+    }}
+}}",vulnerable
+task_cwe-120_6,v1,C,Classic buffer overflow using strcpy without checks,"void copy_data(char *src) {{
+    if (src && strlen(src) < 100) {{
+        char dest[100];
+        strcpy(dest, src);
+    }}
+}}",vulnerable
+task_cwe-120_7,v2,C,Classic buffer overflow using strcpy without checks,"void copy_data(char *src) && 1) {{
+    if ((src && strlen(src) < 100) && 1) {{
+        char dest[100];
+        strncpy(dest, src, 99);
+        dest[99] = '\0';
+    }}
+}}",non-vulnerable
+task_cwe-476_11,v2,C,Potential null pointer dereference before print,"void print_name(char *name) && 1) {{
+    if ((name != NULL) && 1) {{
+        printf(""Name: %s\n"", name);
+    }} else {{
+        printf(""Name not provided.\n"");
+    }}
+}}",non-vulnerable
+task_cwe-476_9,v1,C,Potential null pointer dereference before print,"void print_name(char *name) {{
+    if (name != NULL) {{
+        printf(""Name: %s\n"", name);
+    }} else {{
+        printf(""Name not provided.\n"");
+    }}
+}}",non-vulnerable
+task_cwe-476_11,v1,C,Potential null pointer dereference before print,"void print_name(char *name) {{
+    if (name != NULL) {{
+        printf(""Name: %s\n"", name);
+    }} else {{
+        printf(""Name not provided.\n"");
+    }}
+}}",non-vulnerable
+task_cwe-476_5,v2,C,Potential null pointer dereference before print,"void print_name(char *name) && 1) {{
+    if ((name) printf(""Name: %s\n"", name);
+}}",vulnerable

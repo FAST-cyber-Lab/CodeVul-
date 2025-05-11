@@ -1,0 +1,53 @@
+task_id,variant,language,description,code,label
+task_rust_1,v1,Rust,Command injection via std::process::Command,"let output = Command::new(""sh"").arg(""-c"").arg(user_input).output()?;",vulnerable
+task_rust_1,v2,Rust,Command injection via std::process::Command,"if is_safe(&user_input) {
+    let output = Command::new(""sh"").arg(""-c"").arg(user_input).output()?;
+}",non-vulnerable
+task_rust_2,v1,Rust,Hardcoded secrets in source code,"let api_key = ""mysecretapikey123"";",vulnerable
+task_rust_2,v2,Rust,Hardcoded secrets in source code,"let api_key = std::env::var(""API_KEY"").unwrap();",non-vulnerable
+task_rust_3,v1,Rust,Path traversal vulnerability,"let path = format!(""uploads/{}"", user_input);
+let content = fs::read_to_string(path)?;",vulnerable
+task_rust_3,v2,Rust,Path traversal vulnerability,"let filename = Path::new(&user_input).file_name().unwrap();
+let path = Path::new(""uploads"").join(filename);
+let content = fs::read_to_string(path)?;",non-vulnerable
+task_rust_4,v1,Rust,Insecure randomness for token generation,let token = rand::random::<u32>();,vulnerable
+task_rust_4,v2,Rust,Insecure randomness for token generation,let token: [u8; 16] = rand::rngs::OsRng.gen();,non-vulnerable
+task_rust_5,v1,Rust,Logging sensitive information,"println!(""User password: {}"", password);",vulnerable
+task_rust_5,v2,Rust,Logging sensitive information,"println!(""User login attempted"");",non-vulnerable
+task_rust_6,v1,Rust,Exposing internal error details,"Err(e) => println!(""{:?}"", e),",vulnerable
+task_rust_6,v2,Rust,Exposing internal error details,"Err(_) => println!(""Internal server error""),",non-vulnerable
+task_rust_7,v1,Rust,Improper error handling for web input,"let age: u32 = query.get(""age"").unwrap().parse().unwrap();",vulnerable
+task_rust_7,v2,Rust,Improper error handling for web input,"let age: u32 = query.get(""age"").and_then(|v| v.parse().ok()).unwrap_or(0);",non-vulnerable
+task_rust_8,v1,Rust,Use of unwrap() on Option,"let token = std::env::var(""TOKEN"").unwrap();",vulnerable
+task_rust_8,v2,Rust,Use of unwrap() on Option,"let token = std::env::var(""TOKEN"").unwrap_or_else(|_| ""default"".to_string());",non-vulnerable
+task_rust_9,v1,Rust,SQL injection via manual query concatenation,"let query = format!(""SELECT * FROM users WHERE name = '{}';"", user);",vulnerable
+task_rust_9,v2,Rust,SQL injection via manual query concatenation,"let query = sqlx::query!(""SELECT * FROM users WHERE name = ?"", user);",non-vulnerable
+task_rust_10,v1,Rust,Denial of Service with large allocation,let mut buffer = vec![0u8; input_size];,vulnerable
+task_rust_10,v2,Rust,Denial of Service with large allocation,"if input_size < 1_000_000 {
+    let mut buffer = vec![0u8; input_size];
+}",non-vulnerable
+task_rust_11,v1,Rust,Exposing full stack trace in production,"println!(""{:?}"", backtrace::Backtrace::new());",vulnerable
+task_rust_11,v2,Rust,Exposing full stack trace in production,"log::error!(""Backtrace captured internally"");",non-vulnerable
+task_rust_12,v1,Rust,Missing input validation in file reader,let file = File::open(user_path)?;,vulnerable
+task_rust_12,v2,Rust,Missing input validation in file reader,"let path = Path::new(&user_path);
+if path.starts_with(""/safe"") {
+    let file = File::open(path)?;
+}",non-vulnerable
+task_rust_13,v1,Rust,CSRF token missing in POST handler,"fn submit(data: &str) -> Result<()> {
+    process(data)
+}",vulnerable
+task_rust_13,v2,Rust,CSRF token missing in POST handler,"fn submit(data: &str, csrf: &str) -> Result<()> {
+    if valid_csrf(csrf) {
+        process(data)
+    } else {
+        Err(Error::InvalidCsrf)
+    }
+}",non-vulnerable
+task_rust_14,v1,Rust,Weak password hashing with SHA1,let hash = sha1::Sha1::from(password).hexdigest();,vulnerable
+task_rust_14,v2,Rust,Weak password hashing with SHA1,"let hash = argon2::hash_encoded(password.as_bytes(), salt, &config).unwrap();",non-vulnerable
+task_rust_15,v1,Rust,Missing role-based access control,"if is_authenticated(user) {
+    access_admin_panel();
+}",vulnerable
+task_rust_15,v2,Rust,Missing role-based access control,"if user.has_role(""admin"") {
+    access_admin_panel();
+}",non-vulnerable

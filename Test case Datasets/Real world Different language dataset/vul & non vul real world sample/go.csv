@@ -1,0 +1,45 @@
+task_id,variant,language,description,code,label
+task_go_1,v1,Go,Command injection via exec.Command,"cmd := exec.Command(""sh"", ""-c"", userInput)
+cmd.Run()",vulnerable
+task_go_1,v2,Go,Command injection via exec.Command,"if isSafe(userInput) {
+    cmd := exec.Command(""sh"", ""-c"", userInput)
+    cmd.Run()
+}",non-vulnerable
+task_go_2,v1,Go,SQL Injection with fmt.Sprintf,"query := fmt.Sprintf(""SELECT * FROM users WHERE name='%s'"", name)",vulnerable
+task_go_2,v2,Go,SQL Injection with fmt.Sprintf,"query := db.QueryRow(""SELECT * FROM users WHERE name=?"", name)",non-vulnerable
+task_go_3,v1,Go,Logging sensitive information,"log.Printf(""User password: %s"", password)",vulnerable
+task_go_3,v2,Go,Logging sensitive information,"log.Println(""Login attempt recorded."")",non-vulnerable
+task_go_4,v1,Go,Insecure random token generation,token := strconv.Itoa(rand.Int()),vulnerable
+task_go_4,v2,Go,Insecure random token generation,token := generateSecureToken(),non-vulnerable
+task_go_5,v1,Go,Hardcoded credentials,"const apiKey = ""my-secret-key""",vulnerable
+task_go_5,v2,Go,Hardcoded credentials,"apiKey := os.Getenv(""API_KEY"")",non-vulnerable
+task_go_6,v1,Go,Open redirect,"http.Redirect(w, r, r.URL.Query().Get(""url""), http.StatusFound)",vulnerable
+task_go_6,v2,Go,Open redirect,"url := r.URL.Query().Get(""url"")
+if strings.HasPrefix(url, ""https://trusted.com"") {
+    http.Redirect(w, r, url, http.StatusFound)
+}",non-vulnerable
+task_go_7,v1,Go,XSS via unescaped input,"fmt.Fprintf(w, ""<div>%s</div>"", r.FormValue(""comment""))",vulnerable
+task_go_7,v2,Go,XSS via unescaped input,"template := template.Must(template.New(""comment"").Parse(""<div>{{.}}</div>""))
+template.Execute(w, r.FormValue(""comment""))",non-vulnerable
+task_go_8,v1,Go,Sensitive data in error,"http.Error(w, err.Error(), 500)",vulnerable
+task_go_8,v2,Go,Sensitive data in error,"log.Println(err)
+http.Error(w, ""Internal Server Error"", 500)",non-vulnerable
+task_go_9,v1,Go,Unvalidated file upload,"http.HandleFunc(""/upload"", uploadHandler)",vulnerable
+task_go_9,v2,Go,Unvalidated file upload,"http.HandleFunc(""/upload"", secureUploadHandler)",non-vulnerable
+task_go_10,v1,Go,Weak password hashing,hash := md5.Sum([]byte(password)),vulnerable
+task_go_10,v2,Go,Weak password hashing,hash := sha256.Sum256([]byte(password)),non-vulnerable
+task_go_11,v1,Go,Path traversal vulnerability,"http.ServeFile(w, r, ""./uploads/""+r.URL.Query().Get(""file""))",vulnerable
+task_go_11,v2,Go,Path traversal vulnerability,"filename := filepath.Base(r.URL.Query().Get(""file""))
+http.ServeFile(w, r, filepath.Join(""./uploads"", filename))",non-vulnerable
+task_go_12,v1,Go,Insecure TLS version,tlsConfig := &tls.Config{MinVersion: tls.VersionTLS10},vulnerable
+task_go_12,v2,Go,Insecure TLS version,tlsConfig := &tls.Config{MinVersion: tls.VersionTLS13},non-vulnerable
+task_go_13,v1,Go,Exposing server version,"w.Header().Set(""Server"", ""Go HTTP Server v1.0"")",vulnerable
+task_go_13,v2,Go,Exposing server version,"w.Header().Set(""Server"", """")",non-vulnerable
+task_go_14,v1,Go,CSRF token missing in form,"fmt.Fprintln(w, `<form action='/submit' method='POST'>`)",vulnerable
+task_go_14,v2,Go,CSRF token missing in form,"fmt.Fprintln(w, `<form action='/submit' method='POST'><input type='hidden' name='csrf_token' value='...'>`)",non-vulnerable
+task_go_15,v1,Go,Improper access control,"if user.Role == ""admin"" {
+    showAdminPage()
+}",vulnerable
+task_go_15,v2,Go,Improper access control,"if isAdmin(user) {
+    showAdminPage()
+}",non-vulnerable

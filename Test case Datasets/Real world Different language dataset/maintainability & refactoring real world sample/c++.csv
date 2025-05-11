@@ -1,0 +1,481 @@
+task_id,variant,language,description,code,label
+task_cpp_smell_1,v1,C++,Long Function,"void calculate() {
+    int a = 5, b = 10, c = 20;
+    int x = a + b;
+    int y = x * c;
+    int z = y / 2;
+    std::cout << z << std::endl;
+}",smelly
+task_cpp_smell_4,v2,C++,Inappropriate Intimacy,"class Engine {
+private:
+    int speed;
+public:
+    void increaseSpeed(int value) {
+        speed += value;
+    }
+};
+
+class Car {
+    Engine engine;
+public:
+    void boost() {
+        engine.increaseSpeed(50);
+    }
+};",clean
+task_cpp_smell_7,v1,C++,Magic Numbers,"float area(float r) {
+    return 3.14 * r * r;
+}",smelly
+task_cpp_smell_21,v1,C++,Long Function,"void calculate() {
+    int a = 5, b = 10, c = 20;
+    int x = a + b;
+    int y = x * c;
+    int z = y / 2;
+    std::cout << z << std::endl;
+}",smelly
+task_cpp_smell_28,v1,C++,Duplicate Code,"void drawCircle() {
+    std::cout << ""Drawing circle at (10, 20)"" << std::endl;
+}
+
+void drawSquare() {
+    std::cout << ""Drawing square at (10, 20)"" << std::endl;
+}",smelly
+task_cpp_smell_20,v2,C++,Speculative Generality,"void printMessage() {
+    std::cout << ""Hello!"" << std::endl;
+}",clean
+task_cpp_smell_28,v2,C++,Duplicate Code,"void drawShape(const std::string& shape, int x, int y) {
+    std::cout << ""Drawing "" << shape << "" at ("" << x << "", "" << y << "")"" << std::endl;
+}
+
+void drawCircle() {
+    drawShape(""circle"", 10, 20);
+}
+
+void drawSquare() {
+    drawShape(""square"", 10, 20);
+}",clean
+task_cpp_smell_26,v1,C++,Long Function,"void calculate() {
+    int a = 5, b = 10, c = 20;
+    int x = a + b;
+    int y = x * c;
+    int z = y / 2;
+    std::cout << z << std::endl;
+}",smelly
+task_cpp_smell_18,v2,C++,Duplicate Code,"void drawShape(const std::string& shape, int x, int y) {
+    std::cout << ""Drawing "" << shape << "" at ("" << x << "", "" << y << "")"" << std::endl;
+}
+
+void drawCircle() {
+    drawShape(""circle"", 10, 20);
+}
+
+void drawSquare() {
+    drawShape(""square"", 10, 20);
+}",clean
+task_cpp_smell_20,v1,C++,Speculative Generality,"template<typename T>
+void printValue(T val) {
+    std::cout << val << std::endl;
+}
+
+void printMessage() {
+    printValue<std::string>(""Hello!"");
+}",smelly
+task_cpp_smell_9,v1,C++,Inappropriate Intimacy,"class Engine {
+public:
+    int speed;
+};
+
+class Car {
+public:
+    Engine engine;
+    void boost() {
+        engine.speed += 50;
+    }
+};",smelly
+task_cpp_smell_3,v1,C++,Duplicate Code,"void drawCircle() {
+    std::cout << ""Drawing circle at (10, 20)"" << std::endl;
+}
+
+void drawSquare() {
+    std::cout << ""Drawing square at (10, 20)"" << std::endl;
+}",smelly
+task_cpp_smell_19,v1,C++,Inappropriate Intimacy,"class Engine {
+public:
+    int speed;
+};
+
+class Car {
+public:
+    Engine engine;
+    void boost() {
+        engine.speed += 50;
+    }
+};",smelly
+task_cpp_smell_12,v1,C++,Magic Numbers,"float area(float r) {
+    return 3.14 * r * r;
+}",smelly
+task_cpp_smell_3,v2,C++,Duplicate Code,"void drawShape(const std::string& shape, int x, int y) {
+    std::cout << ""Drawing "" << shape << "" at ("" << x << "", "" << y << "")"" << std::endl;
+}
+
+void drawCircle() {
+    drawShape(""circle"", 10, 20);
+}
+
+void drawSquare() {
+    drawShape(""square"", 10, 20);
+}",clean
+task_cpp_smell_2,v2,C++,Magic Numbers,"const float PI = 3.14;
+
+float area(float r) {
+    return PI * r * r;
+}",clean
+task_cpp_smell_4,v1,C++,Inappropriate Intimacy,"class Engine {
+public:
+    int speed;
+};
+
+class Car {
+public:
+    Engine engine;
+    void boost() {
+        engine.speed += 50;
+    }
+};",smelly
+task_cpp_smell_16,v2,C++,Long Function,"int compute(int a, int b, int c) {
+    return ((a + b) * c) / 2;
+}
+
+void calculate() {
+    int result = compute(5, 10, 20);
+    std::cout << result << std::endl;
+}",clean
+task_cpp_smell_9,v2,C++,Inappropriate Intimacy,"class Engine {
+private:
+    int speed;
+public:
+    void increaseSpeed(int value) {
+        speed += value;
+    }
+};
+
+class Car {
+    Engine engine;
+public:
+    void boost() {
+        engine.increaseSpeed(50);
+    }
+};",clean
+task_cpp_smell_25,v1,C++,Speculative Generality,"template<typename T>
+void printValue(T val) {
+    std::cout << val << std::endl;
+}
+
+void printMessage() {
+    printValue<std::string>(""Hello!"");
+}",smelly
+task_cpp_smell_30,v2,C++,Speculative Generality,"void printMessage() {
+    std::cout << ""Hello!"" << std::endl;
+}",clean
+task_cpp_smell_5,v1,C++,Speculative Generality,"template<typename T>
+void printValue(T val) {
+    std::cout << val << std::endl;
+}
+
+void printMessage() {
+    printValue<std::string>(""Hello!"");
+}",smelly
+task_cpp_smell_14,v2,C++,Inappropriate Intimacy,"class Engine {
+private:
+    int speed;
+public:
+    void increaseSpeed(int value) {
+        speed += value;
+    }
+};
+
+class Car {
+    Engine engine;
+public:
+    void boost() {
+        engine.increaseSpeed(50);
+    }
+};",clean
+task_cpp_smell_24,v1,C++,Inappropriate Intimacy,"class Engine {
+public:
+    int speed;
+};
+
+class Car {
+public:
+    Engine engine;
+    void boost() {
+        engine.speed += 50;
+    }
+};",smelly
+task_cpp_smell_27,v2,C++,Magic Numbers,"const float PI = 3.14;
+
+float area(float r) {
+    return PI * r * r;
+}",clean
+task_cpp_smell_10,v2,C++,Speculative Generality,"void printMessage() {
+    std::cout << ""Hello!"" << std::endl;
+}",clean
+task_cpp_smell_22,v1,C++,Magic Numbers,"float area(float r) {
+    return 3.14 * r * r;
+}",smelly
+task_cpp_smell_24,v2,C++,Inappropriate Intimacy,"class Engine {
+private:
+    int speed;
+public:
+    void increaseSpeed(int value) {
+        speed += value;
+    }
+};
+
+class Car {
+    Engine engine;
+public:
+    void boost() {
+        engine.increaseSpeed(50);
+    }
+};",clean
+task_cpp_smell_21,v2,C++,Long Function,"int compute(int a, int b, int c) {
+    return ((a + b) * c) / 2;
+}
+
+void calculate() {
+    int result = compute(5, 10, 20);
+    std::cout << result << std::endl;
+}",clean
+task_cpp_smell_23,v2,C++,Duplicate Code,"void drawShape(const std::string& shape, int x, int y) {
+    std::cout << ""Drawing "" << shape << "" at ("" << x << "", "" << y << "")"" << std::endl;
+}
+
+void drawCircle() {
+    drawShape(""circle"", 10, 20);
+}
+
+void drawSquare() {
+    drawShape(""square"", 10, 20);
+}",clean
+task_cpp_smell_19,v2,C++,Inappropriate Intimacy,"class Engine {
+private:
+    int speed;
+public:
+    void increaseSpeed(int value) {
+        speed += value;
+    }
+};
+
+class Car {
+    Engine engine;
+public:
+    void boost() {
+        engine.increaseSpeed(50);
+    }
+};",clean
+task_cpp_smell_5,v2,C++,Speculative Generality,"void printMessage() {
+    std::cout << ""Hello!"" << std::endl;
+}",clean
+task_cpp_smell_15,v1,C++,Speculative Generality,"template<typename T>
+void printValue(T val) {
+    std::cout << val << std::endl;
+}
+
+void printMessage() {
+    printValue<std::string>(""Hello!"");
+}",smelly
+task_cpp_smell_22,v2,C++,Magic Numbers,"const float PI = 3.14;
+
+float area(float r) {
+    return PI * r * r;
+}",clean
+task_cpp_smell_8,v1,C++,Duplicate Code,"void drawCircle() {
+    std::cout << ""Drawing circle at (10, 20)"" << std::endl;
+}
+
+void drawSquare() {
+    std::cout << ""Drawing square at (10, 20)"" << std::endl;
+}",smelly
+task_cpp_smell_1,v2,C++,Long Function,"int compute(int a, int b, int c) {
+    return ((a + b) * c) / 2;
+}
+
+void calculate() {
+    int result = compute(5, 10, 20);
+    std::cout << result << std::endl;
+}",clean
+task_cpp_smell_30,v1,C++,Speculative Generality,"template<typename T>
+void printValue(T val) {
+    std::cout << val << std::endl;
+}
+
+void printMessage() {
+    printValue<std::string>(""Hello!"");
+}",smelly
+task_cpp_smell_25,v2,C++,Speculative Generality,"void printMessage() {
+    std::cout << ""Hello!"" << std::endl;
+}",clean
+task_cpp_smell_26,v2,C++,Long Function,"int compute(int a, int b, int c) {
+    return ((a + b) * c) / 2;
+}
+
+void calculate() {
+    int result = compute(5, 10, 20);
+    std::cout << result << std::endl;
+}",clean
+task_cpp_smell_13,v2,C++,Duplicate Code,"void drawShape(const std::string& shape, int x, int y) {
+    std::cout << ""Drawing "" << shape << "" at ("" << x << "", "" << y << "")"" << std::endl;
+}
+
+void drawCircle() {
+    drawShape(""circle"", 10, 20);
+}
+
+void drawSquare() {
+    drawShape(""square"", 10, 20);
+}",clean
+task_cpp_smell_16,v1,C++,Long Function,"void calculate() {
+    int a = 5, b = 10, c = 20;
+    int x = a + b;
+    int y = x * c;
+    int z = y / 2;
+    std::cout << z << std::endl;
+}",smelly
+task_cpp_smell_10,v1,C++,Speculative Generality,"template<typename T>
+void printValue(T val) {
+    std::cout << val << std::endl;
+}
+
+void printMessage() {
+    printValue<std::string>(""Hello!"");
+}",smelly
+task_cpp_smell_13,v1,C++,Duplicate Code,"void drawCircle() {
+    std::cout << ""Drawing circle at (10, 20)"" << std::endl;
+}
+
+void drawSquare() {
+    std::cout << ""Drawing square at (10, 20)"" << std::endl;
+}",smelly
+task_cpp_smell_11,v1,C++,Long Function,"void calculate() {
+    int a = 5, b = 10, c = 20;
+    int x = a + b;
+    int y = x * c;
+    int z = y / 2;
+    std::cout << z << std::endl;
+}",smelly
+task_cpp_smell_27,v1,C++,Magic Numbers,"float area(float r) {
+    return 3.14 * r * r;
+}",smelly
+task_cpp_smell_14,v1,C++,Inappropriate Intimacy,"class Engine {
+public:
+    int speed;
+};
+
+class Car {
+public:
+    Engine engine;
+    void boost() {
+        engine.speed += 50;
+    }
+};",smelly
+task_cpp_smell_8,v2,C++,Duplicate Code,"void drawShape(const std::string& shape, int x, int y) {
+    std::cout << ""Drawing "" << shape << "" at ("" << x << "", "" << y << "")"" << std::endl;
+}
+
+void drawCircle() {
+    drawShape(""circle"", 10, 20);
+}
+
+void drawSquare() {
+    drawShape(""square"", 10, 20);
+}",clean
+task_cpp_smell_18,v1,C++,Duplicate Code,"void drawCircle() {
+    std::cout << ""Drawing circle at (10, 20)"" << std::endl;
+}
+
+void drawSquare() {
+    std::cout << ""Drawing square at (10, 20)"" << std::endl;
+}",smelly
+task_cpp_smell_2,v1,C++,Magic Numbers,"float area(float r) {
+    return 3.14 * r * r;
+}",smelly
+task_cpp_smell_17,v2,C++,Magic Numbers,"const float PI = 3.14;
+
+float area(float r) {
+    return PI * r * r;
+}",clean
+task_cpp_smell_29,v2,C++,Inappropriate Intimacy,"class Engine {
+private:
+    int speed;
+public:
+    void increaseSpeed(int value) {
+        speed += value;
+    }
+};
+
+class Car {
+    Engine engine;
+public:
+    void boost() {
+        engine.increaseSpeed(50);
+    }
+};",clean
+task_cpp_smell_7,v2,C++,Magic Numbers,"const float PI = 3.14;
+
+float area(float r) {
+    return PI * r * r;
+}",clean
+task_cpp_smell_23,v1,C++,Duplicate Code,"void drawCircle() {
+    std::cout << ""Drawing circle at (10, 20)"" << std::endl;
+}
+
+void drawSquare() {
+    std::cout << ""Drawing square at (10, 20)"" << std::endl;
+}",smelly
+task_cpp_smell_11,v2,C++,Long Function,"int compute(int a, int b, int c) {
+    return ((a + b) * c) / 2;
+}
+
+void calculate() {
+    int result = compute(5, 10, 20);
+    std::cout << result << std::endl;
+}",clean
+task_cpp_smell_12,v2,C++,Magic Numbers,"const float PI = 3.14;
+
+float area(float r) {
+    return PI * r * r;
+}",clean
+task_cpp_smell_15,v2,C++,Speculative Generality,"void printMessage() {
+    std::cout << ""Hello!"" << std::endl;
+}",clean
+task_cpp_smell_17,v1,C++,Magic Numbers,"float area(float r) {
+    return 3.14 * r * r;
+}",smelly
+task_cpp_smell_6,v1,C++,Long Function,"void calculate() {
+    int a = 5, b = 10, c = 20;
+    int x = a + b;
+    int y = x * c;
+    int z = y / 2;
+    std::cout << z << std::endl;
+}",smelly
+task_cpp_smell_6,v2,C++,Long Function,"int compute(int a, int b, int c) {
+    return ((a + b) * c) / 2;
+}
+
+void calculate() {
+    int result = compute(5, 10, 20);
+    std::cout << result << std::endl;
+}",clean
+task_cpp_smell_29,v1,C++,Inappropriate Intimacy,"class Engine {
+public:
+    int speed;
+};
+
+class Car {
+public:
+    Engine engine;
+    void boost() {
+        engine.speed += 50;
+    }
+};",smelly

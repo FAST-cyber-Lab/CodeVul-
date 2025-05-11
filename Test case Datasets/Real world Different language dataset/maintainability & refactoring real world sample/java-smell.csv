@@ -1,0 +1,304 @@
+task_id,variant,language,description,code,label
+task_smell_1,v1,Java,Long Method,"public void process() {
+  // many lines of code
+  int a = 5;
+  int b = 10;
+  int c = a + b;
+  // imagine 20+ more lines
+  System.out.println(c);
+}",smelly
+task_smell_1,v2,Java,Long Method,"public void process() {
+  int result = calculateSum(5, 10);
+  System.out.println(result);
+}
+private int calculateSum(int a, int b) {
+  return a + b;
+}",clean
+task_smell_2,v1,Java,Duplicate Code,"public void drawCircle() {
+  int x = 10;
+  int y = 20;
+  System.out.println(""Drawing Circle at "" + x + "","" + y);
+}
+public void drawSquare() {
+  int x = 10;
+  int y = 20;
+  System.out.println(""Drawing Square at "" + x + "","" + y);
+}",smelly
+task_smell_2,v2,Java,Duplicate Code,"private void drawShape(String shape, int x, int y) {
+  System.out.println(""Drawing "" + shape + "" at "" + x + "","" + y);
+}
+public void drawCircle() {
+  drawShape(""Circle"", 10, 20);
+}
+public void drawSquare() {
+  drawShape(""Square"", 10, 20);
+}",clean
+task_smell_3,v1,Java,God Class,"public class GodClass {
+  public void login() {}
+  public void calculateSalary() {}
+  public void renderPage() {}
+}",smelly
+task_smell_3,v2,Java,God Class,"public class AuthManager {
+  public void login() {}
+}
+public class Payroll {
+  public void calculateSalary() {}
+}
+public class UIHandler {
+  public void renderPage() {}
+}",clean
+task_smell_4,v1,Java,Feature Envy,"public class OrderPrinter {
+  public void printOrder(Order order) {
+    System.out.println(order.getDetails());
+  }
+}",smelly
+task_smell_4,v2,Java,Feature Envy,"public class Order {
+  public void print() {
+    System.out.println(this.getDetails());
+  }
+}",clean
+task_smell_5,v1,Java,Data Clumps,"public void save(String name, String address, String phone) {}
+public void update(String name, String address, String phone) {}",smelly
+task_smell_5,v2,Java,Data Clumps,"public class ContactInfo {
+  String name, address, phone;
+}
+public void save(ContactInfo contact) {}
+public void update(ContactInfo contact) {}",clean
+task_smell_6,v1,Java,Speculative Generality,"public interface FutureFeature {
+  void unusedMethod();
+}",smelly
+task_smell_6,v2,Java,Speculative Generality,// Removed unused abstraction,clean
+task_smell_7,v1,Java,Switch Statements,"public void process(int type) {
+  switch(type) {
+    case 1: handleA(); break;
+    case 2: handleB(); break;
+  }
+}",smelly
+task_smell_7,v2,Java,Switch Statements,"public interface Handler {
+  void handle();
+}
+public class AHandler implements Handler {
+  public void handle() {}
+}
+public class BHandler implements Handler {
+  public void handle() {}
+}",clean
+task_smell_8,v1,Java,Temporary Field,"public class Report {
+  private String tempField;
+  public void createSummary(boolean detailed) {
+    if (detailed) tempField = ""Details"";
+  }
+}",smelly
+task_smell_8,v2,Java,Temporary Field,"public class Report {
+  public void createSummary(boolean detailed) {
+    String detail = detailed ? ""Details"" : """";
+  }
+}",clean
+task_smell_9,v1,Java,Lazy Class,"public class Placeholder {
+  public void doNothing() {}
+}",smelly
+task_smell_9,v2,Java,Lazy Class,"// Placeholder class removed, responsibilities merged",clean
+task_smell_10,v1,Java,Message Chains,customer.getOrder().getInvoice().print();,smelly
+task_smell_10,v2,Java,Message Chains,customer.printInvoice();,clean
+task_smell_11,v1,Java,Long Method (variation 2),"public void process() {
+  // many lines of code
+  int a = 5;
+  int b = 10;
+  int c = a + b;
+  // imagine 20+ more lines
+  System.out.println(c);
+}",smelly
+task_smell_11,v2,Java,Long Method (variation 2),"public void process() {
+  int result = calculateSum(5, 10);
+  System.out.println(result);
+}
+private int calculateSum(int a, int b) {
+  return a + b;
+}",clean
+task_smell_12,v1,Java,Duplicate Code (variation 2),"public void drawCircle() {
+  int x = 10;
+  int y = 20;
+  System.out.println(""Drawing Circle at "" + x + "","" + y);
+}
+public void drawSquare() {
+  int x = 10;
+  int y = 20;
+  System.out.println(""Drawing Square at "" + x + "","" + y);
+}",smelly
+task_smell_12,v2,Java,Duplicate Code (variation 2),"private void drawShape(String shape, int x, int y) {
+  System.out.println(""Drawing "" + shape + "" at "" + x + "","" + y);
+}
+public void drawCircle() {
+  drawShape(""Circle"", 10, 20);
+}
+public void drawSquare() {
+  drawShape(""Square"", 10, 20);
+}",clean
+task_smell_13,v1,Java,God Class (variation 2),"public class GodClass {
+  public void login() {}
+  public void calculateSalary() {}
+  public void renderPage() {}
+}",smelly
+task_smell_13,v2,Java,God Class (variation 2),"public class AuthManager {
+  public void login() {}
+}
+public class Payroll {
+  public void calculateSalary() {}
+}
+public class UIHandler {
+  public void renderPage() {}
+}",clean
+task_smell_14,v1,Java,Feature Envy (variation 2),"public class OrderPrinter {
+  public void printOrder(Order order) {
+    System.out.println(order.getDetails());
+  }
+}",smelly
+task_smell_14,v2,Java,Feature Envy (variation 2),"public class Order {
+  public void print() {
+    System.out.println(this.getDetails());
+  }
+}",clean
+task_smell_15,v1,Java,Data Clumps (variation 2),"public void save(String name, String address, String phone) {}
+public void update(String name, String address, String phone) {}",smelly
+task_smell_15,v2,Java,Data Clumps (variation 2),"public class ContactInfo {
+  String name, address, phone;
+}
+public void save(ContactInfo contact) {}
+public void update(ContactInfo contact) {}",clean
+task_smell_16,v1,Java,Speculative Generality (variation 2),"public interface FutureFeature {
+  void unusedMethod();
+}",smelly
+task_smell_16,v2,Java,Speculative Generality (variation 2),// Removed unused abstraction,clean
+task_smell_17,v1,Java,Switch Statements (variation 2),"public void process(int type) {
+  switch(type) {
+    case 1: handleA(); break;
+    case 2: handleB(); break;
+  }
+}",smelly
+task_smell_17,v2,Java,Switch Statements (variation 2),"public interface Handler {
+  void handle();
+}
+public class AHandler implements Handler {
+  public void handle() {}
+}
+public class BHandler implements Handler {
+  public void handle() {}
+}",clean
+task_smell_18,v1,Java,Temporary Field (variation 2),"public class Report {
+  private String tempField;
+  public void createSummary(boolean detailed) {
+    if (detailed) tempField = ""Details"";
+  }
+}",smelly
+task_smell_18,v2,Java,Temporary Field (variation 2),"public class Report {
+  public void createSummary(boolean detailed) {
+    String detail = detailed ? ""Details"" : """";
+  }
+}",clean
+task_smell_19,v1,Java,Lazy Class (variation 2),"public class Placeholder {
+  public void doNothing() {}
+}",smelly
+task_smell_19,v2,Java,Lazy Class (variation 2),"// Placeholder class removed, responsibilities merged",clean
+task_smell_20,v1,Java,Message Chains (variation 2),customer.getOrder().getInvoice().print();,smelly
+task_smell_20,v2,Java,Message Chains (variation 2),customer.printInvoice();,clean
+task_smell_21,v1,Java,Long Method (variation 3),"public void process() {
+  // many lines of code
+  int a = 5;
+  int b = 10;
+  int c = a + b;
+  // imagine 20+ more lines
+  System.out.println(c);
+}",smelly
+task_smell_21,v2,Java,Long Method (variation 3),"public void process() {
+  int result = calculateSum(5, 10);
+  System.out.println(result);
+}
+private int calculateSum(int a, int b) {
+  return a + b;
+}",clean
+task_smell_22,v1,Java,Duplicate Code (variation 3),"public void drawCircle() {
+  int x = 10;
+  int y = 20;
+  System.out.println(""Drawing Circle at "" + x + "","" + y);
+}
+public void drawSquare() {
+  int x = 10;
+  int y = 20;
+  System.out.println(""Drawing Square at "" + x + "","" + y);
+}",smelly
+task_smell_22,v2,Java,Duplicate Code (variation 3),"private void drawShape(String shape, int x, int y) {
+  System.out.println(""Drawing "" + shape + "" at "" + x + "","" + y);
+}
+public void drawCircle() {
+  drawShape(""Circle"", 10, 20);
+}
+public void drawSquare() {
+  drawShape(""Square"", 10, 20);
+}",clean
+task_smell_23,v1,Java,God Class (variation 3),"public class GodClass {
+  public void login() {}
+  public void calculateSalary() {}
+  public void renderPage() {}
+}",smelly
+task_smell_23,v2,Java,God Class (variation 3),"public class AuthManager {
+  public void login() {}
+}
+public class Payroll {
+  public void calculateSalary() {}
+}
+public class UIHandler {
+  public void renderPage() {}
+}",clean
+task_smell_24,v1,Java,Feature Envy (variation 3),"public class OrderPrinter {
+  public void printOrder(Order order) {
+    System.out.println(order.getDetails());
+  }
+}",smelly
+task_smell_24,v2,Java,Feature Envy (variation 3),"public class Order {
+  public void print() {
+    System.out.println(this.getDetails());
+  }
+}",clean
+task_smell_25,v1,Java,Data Clumps (variation 3),"public void save(String name, String address, String phone) {}
+public void update(String name, String address, String phone) {}",smelly
+task_smell_25,v2,Java,Data Clumps (variation 3),"public class ContactInfo {
+  String name, address, phone;
+}
+public void save(ContactInfo contact) {}
+public void update(ContactInfo contact) {}",clean
+task_smell_26,v1,Java,Speculative Generality (variation 3),"public interface FutureFeature {
+  void unusedMethod();
+}",smelly
+task_smell_26,v2,Java,Speculative Generality (variation 3),// Removed unused abstraction,clean
+task_smell_27,v1,Java,Switch Statements (variation 3),"public void process(int type) {
+  switch(type) {
+    case 1: handleA(); break;
+    case 2: handleB(); break;
+  }
+}",smelly
+task_smell_27,v2,Java,Switch Statements (variation 3),"public interface Handler {
+  void handle();
+}
+public class AHandler implements Handler {
+  public void handle() {}
+}
+public class BHandler implements Handler {
+  public void handle() {}
+}",clean
+task_smell_28,v1,Java,Temporary Field (variation 3),"public class Report {
+  private String tempField;
+  public void createSummary(boolean detailed) {
+    if (detailed) tempField = ""Details"";
+  }
+}",smelly
+task_smell_28,v2,Java,Temporary Field (variation 3),"public class Report {
+  public void createSummary(boolean detailed) {
+    String detail = detailed ? ""Details"" : """";
+  }
+}",clean
+task_smell_29,v1,Java,Lazy Class (variation 3),"public class Placeholder {
+  public void doNothing() {}
+}",smelly
+task_smell_29,v2,Java,Lazy Class (variation 3),"// Placeholder class removed, responsibilities merged",clean
+task_smell_30,v1,Java,Message Chains (variation 3),customer.getOrder().getInvoice().print();,smelly
+task_smell_30,v2,Java,Message Chains (variation 3),customer.printInvoice();,clean

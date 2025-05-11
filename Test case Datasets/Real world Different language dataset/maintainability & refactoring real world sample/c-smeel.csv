@@ -1,0 +1,226 @@
+task_id,variant,language,description,code,label
+task_c_smell_1,v1,C,Long Function,"void process() {
+  int x = 1;
+  int y = 2;
+  int z = x + y;
+  // ... many more operations
+  printf(""%d"", z);
+}",smelly
+task_c_smell_1,v2,C,Long Function,"int sum(int x, int y) {
+  return x + y;
+}
+void process() {
+  int z = sum(1, 2);
+  printf(""%d"", z);
+}",clean
+task_c_smell_2,v1,C,Duplicate Code,"void draw_circle() {
+  int x = 10, y = 20;
+  printf(""Circle at %d,%d\n"", x, y);
+}
+void draw_square() {
+  int x = 10, y = 20;
+  printf(""Square at %d,%d\n"", x, y);
+}",smelly
+task_c_smell_2,v2,C,Duplicate Code,"void draw_shape(const char* shape, int x, int y) {
+  printf(""%s at %d,%d\n"", shape, x, y);
+}
+void draw_circle() {
+  draw_shape(""Circle"", 10, 20);
+}
+void draw_square() {
+  draw_shape(""Square"", 10, 20);
+}",clean
+task_c_smell_3,v1,C,Magic Numbers,float area = 3.14 * r * r;,smelly
+task_c_smell_3,v2,C,Magic Numbers,"#define PI 3.14
+float area = PI * r * r;",clean
+task_c_smell_4,v1,C,Too Many Parameters,"void update(char* name, int age, float salary, int id, char* dept) {}",smelly
+task_c_smell_4,v2,C,Too Many Parameters,"typedef struct {
+  char* name;
+  int age;
+  float salary;
+  int id;
+  char* dept;
+} Employee;
+void update(Employee emp) {}",clean
+task_c_smell_5,v1,C,Global Variables,"int counter;
+void increment() {
+  counter++;
+}",smelly
+task_c_smell_5,v2,C,Global Variables,"void increment(int* counter) {
+  (*counter)++;
+}",clean
+task_c_smell_6,v1,C,Dead Code,"int func() {
+  return 1;
+  printf(""Unreachable"");
+}",smelly
+task_c_smell_6,v2,C,Dead Code,"int func() {
+  return 1;
+}",clean
+task_c_smell_7,v1,C,Duplicated Logic,"if (x > 0) y = x; else y = -x;
+if (x > 0) z = x; else z = -x;",smelly
+task_c_smell_7,v2,C,Duplicated Logic,"int abs_val(int x) { return x > 0 ? x : -x; }
+y = abs_val(x);
+z = abs_val(x);",clean
+task_c_smell_8,v1,C,Hard-Coded Paths,"fopen(""/home/user/data.txt"", ""r"");",smelly
+task_c_smell_8,v2,C,Hard-Coded Paths,"#define FILE_PATH ""/home/user/data.txt""
+fopen(FILE_PATH, ""r"");",clean
+task_c_smell_9,v1,C,Improper Function Naming,void DoStuff() {},smelly
+task_c_smell_9,v2,C,Improper Function Naming,void do_stuff() {},clean
+task_c_smell_10,v1,C,Poor Commenting,"int add(int a, int b) {
+  // magic
+  return a + b;
+}",smelly
+task_c_smell_10,v2,C,Poor Commenting,"int add(int a, int b) {
+  // Adds two integers and returns the result
+  return a + b;
+}",clean
+task_c_smell_11,v1,C,Long Function (variation 2),"void process() {
+  int x = 1;
+  int y = 2;
+  int z = x + y;
+  // ... many more operations
+  printf(""%d"", z);
+}",smelly
+task_c_smell_11,v2,C,Long Function (variation 2),"int sum(int x, int y) {
+  return x + y;
+}
+void process() {
+  int z = sum(1, 2);
+  printf(""%d"", z);
+}",clean
+task_c_smell_12,v1,C,Duplicate Code (variation 2),"void draw_circle() {
+  int x = 10, y = 20;
+  printf(""Circle at %d,%d\n"", x, y);
+}
+void draw_square() {
+  int x = 10, y = 20;
+  printf(""Square at %d,%d\n"", x, y);
+}",smelly
+task_c_smell_12,v2,C,Duplicate Code (variation 2),"void draw_shape(const char* shape, int x, int y) {
+  printf(""%s at %d,%d\n"", shape, x, y);
+}
+void draw_circle() {
+  draw_shape(""Circle"", 10, 20);
+}
+void draw_square() {
+  draw_shape(""Square"", 10, 20);
+}",clean
+task_c_smell_13,v1,C,Magic Numbers (variation 2),float area = 3.14 * r * r;,smelly
+task_c_smell_13,v2,C,Magic Numbers (variation 2),"#define PI 3.14
+float area = PI * r * r;",clean
+task_c_smell_14,v1,C,Too Many Parameters (variation 2),"void update(char* name, int age, float salary, int id, char* dept) {}",smelly
+task_c_smell_14,v2,C,Too Many Parameters (variation 2),"typedef struct {
+  char* name;
+  int age;
+  float salary;
+  int id;
+  char* dept;
+} Employee;
+void update(Employee emp) {}",clean
+task_c_smell_15,v1,C,Global Variables (variation 2),"int counter;
+void increment() {
+  counter++;
+}",smelly
+task_c_smell_15,v2,C,Global Variables (variation 2),"void increment(int* counter) {
+  (*counter)++;
+}",clean
+task_c_smell_16,v1,C,Dead Code (variation 2),"int func() {
+  return 1;
+  printf(""Unreachable"");
+}",smelly
+task_c_smell_16,v2,C,Dead Code (variation 2),"int func() {
+  return 1;
+}",clean
+task_c_smell_17,v1,C,Duplicated Logic (variation 2),"if (x > 0) y = x; else y = -x;
+if (x > 0) z = x; else z = -x;",smelly
+task_c_smell_17,v2,C,Duplicated Logic (variation 2),"int abs_val(int x) { return x > 0 ? x : -x; }
+y = abs_val(x);
+z = abs_val(x);",clean
+task_c_smell_18,v1,C,Hard-Coded Paths (variation 2),"fopen(""/home/user/data.txt"", ""r"");",smelly
+task_c_smell_18,v2,C,Hard-Coded Paths (variation 2),"#define FILE_PATH ""/home/user/data.txt""
+fopen(FILE_PATH, ""r"");",clean
+task_c_smell_19,v1,C,Improper Function Naming (variation 2),void DoStuff() {},smelly
+task_c_smell_19,v2,C,Improper Function Naming (variation 2),void do_stuff() {},clean
+task_c_smell_20,v1,C,Poor Commenting (variation 2),"int add(int a, int b) {
+  // magic
+  return a + b;
+}",smelly
+task_c_smell_20,v2,C,Poor Commenting (variation 2),"int add(int a, int b) {
+  // Adds two integers and returns the result
+  return a + b;
+}",clean
+task_c_smell_21,v1,C,Long Function (variation 3),"void process() {
+  int x = 1;
+  int y = 2;
+  int z = x + y;
+  // ... many more operations
+  printf(""%d"", z);
+}",smelly
+task_c_smell_21,v2,C,Long Function (variation 3),"int sum(int x, int y) {
+  return x + y;
+}
+void process() {
+  int z = sum(1, 2);
+  printf(""%d"", z);
+}",clean
+task_c_smell_22,v1,C,Duplicate Code (variation 3),"void draw_circle() {
+  int x = 10, y = 20;
+  printf(""Circle at %d,%d\n"", x, y);
+}
+void draw_square() {
+  int x = 10, y = 20;
+  printf(""Square at %d,%d\n"", x, y);
+}",smelly
+task_c_smell_22,v2,C,Duplicate Code (variation 3),"void draw_shape(const char* shape, int x, int y) {
+  printf(""%s at %d,%d\n"", shape, x, y);
+}
+void draw_circle() {
+  draw_shape(""Circle"", 10, 20);
+}
+void draw_square() {
+  draw_shape(""Square"", 10, 20);
+}",clean
+task_c_smell_23,v1,C,Magic Numbers (variation 3),float area = 3.14 * r * r;,smelly
+task_c_smell_23,v2,C,Magic Numbers (variation 3),"#define PI 3.14
+float area = PI * r * r;",clean
+task_c_smell_24,v1,C,Too Many Parameters (variation 3),"void update(char* name, int age, float salary, int id, char* dept) {}",smelly
+task_c_smell_24,v2,C,Too Many Parameters (variation 3),"typedef struct {
+  char* name;
+  int age;
+  float salary;
+  int id;
+  char* dept;
+} Employee;
+void update(Employee emp) {}",clean
+task_c_smell_25,v1,C,Global Variables (variation 3),"int counter;
+void increment() {
+  counter++;
+}",smelly
+task_c_smell_25,v2,C,Global Variables (variation 3),"void increment(int* counter) {
+  (*counter)++;
+}",clean
+task_c_smell_26,v1,C,Dead Code (variation 3),"int func() {
+  return 1;
+  printf(""Unreachable"");
+}",smelly
+task_c_smell_26,v2,C,Dead Code (variation 3),"int func() {
+  return 1;
+}",clean
+task_c_smell_27,v1,C,Duplicated Logic (variation 3),"if (x > 0) y = x; else y = -x;
+if (x > 0) z = x; else z = -x;",smelly
+task_c_smell_27,v2,C,Duplicated Logic (variation 3),"int abs_val(int x) { return x > 0 ? x : -x; }
+y = abs_val(x);
+z = abs_val(x);",clean
+task_c_smell_28,v1,C,Hard-Coded Paths (variation 3),"fopen(""/home/user/data.txt"", ""r"");",smelly
+task_c_smell_28,v2,C,Hard-Coded Paths (variation 3),"#define FILE_PATH ""/home/user/data.txt""
+fopen(FILE_PATH, ""r"");",clean
+task_c_smell_29,v1,C,Improper Function Naming (variation 3),void DoStuff() {},smelly
+task_c_smell_29,v2,C,Improper Function Naming (variation 3),void do_stuff() {},clean
+task_c_smell_30,v1,C,Poor Commenting (variation 3),"int add(int a, int b) {
+  // magic
+  return a + b;
+}",smelly
+task_c_smell_30,v2,C,Poor Commenting (variation 3),"int add(int a, int b) {
+  // Adds two integers and returns the result
+  return a + b;
+}",clean

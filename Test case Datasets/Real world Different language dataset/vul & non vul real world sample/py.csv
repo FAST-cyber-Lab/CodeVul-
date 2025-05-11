@@ -1,0 +1,201 @@
+task_id,variant,language,description,code,label
+task_py_1,v1,Python,Insecure deserialization of untrusted data,"def load_data(data):
+    import pickle
+    return pickle.loads(data)",vulnerable
+task_py_1,v2,Python,Insecure deserialization of untrusted data,"import pickle, io
+
+def load_data(data):
+    safe_stream = io.BytesIO(data)
+    return pickle.load(safe_stream)",non-vulnerable
+task_py_2,v1,Python,Use of eval with user input,"def evaluate(expr):
+    return eval(expr)",vulnerable
+task_py_2,v2,Python,Use of eval with user input,"def evaluate(expr):
+    import ast
+    return ast.literal_eval(expr)",non-vulnerable
+task_py_3,v1,Python,Missing input validation before writing to file,"def save_content(filename, content):
+    with open(filename, 'w') as f:
+        f.write(content)",vulnerable
+task_py_3,v2,Python,Missing input validation before writing to file,"import os
+
+def save_content(filename, content):
+    if not filename.startswith('/'):
+        with open(filename, 'w') as f:
+            f.write(content)",non-vulnerable
+task_py_4,v1,Python,Logging sensitive information,"def login(user, pwd):
+    print(f'User: {user}, Password: {pwd}')",vulnerable
+task_py_4,v2,Python,Logging sensitive information,"def login(user, pwd):
+    print(f'User: {user}, Password: [REDACTED]')",non-vulnerable
+task_py_5,v1,Python,Command injection via os.system,"def run(user_input):
+    import os
+    os.system(user_input)",vulnerable
+task_py_5,v2,Python,Command injection via os.system,"import subprocess
+
+def run(user_input):
+    subprocess.run(['echo', user_input])",non-vulnerable
+task_py_6,v1,Python,Exposure of debug mode in Flask app,"from flask import Flask
+app = Flask(__name__)
+app.run(debug=True)",vulnerable
+task_py_6,v2,Python,Exposure of debug mode in Flask app,"from flask import Flask
+app = Flask(__name__)
+app.run(debug=False)",non-vulnerable
+task_py_7,v1,Python,SQL Injection vulnerability using string formatting,"def get_user_data(user):
+    query = f""SELECT * FROM users WHERE name = '{user}'""
+    return query",vulnerable
+task_py_7,v2,Python,SQL Injection vulnerability using string formatting,"def get_user_data(user):
+    import sqlite3
+    query = ""SELECT * FROM users WHERE name = ?""
+    return query, (user,)",non-vulnerable
+task_py_8,v1,Python,Exposing stack trace to users,"def divide(a, b):
+    return a / b",vulnerable
+task_py_8,v2,Python,Exposing stack trace to users,"def divide(a, b):
+    try:
+        return a / b
+    except ZeroDivisionError:
+        return 'Invalid operation'",non-vulnerable
+task_py_9,v1,Python,Hardcoded cryptographic key,"def encrypt(data):
+    key = 'hardcodedkey123'
+    return f'{data}-{key}'",vulnerable
+task_py_9,v2,Python,Hardcoded cryptographic key,"import os
+
+def encrypt(data):
+    key = os.getenv('ENCRYPTION_KEY')
+    return f'{data}-{key}'",non-vulnerable
+task_py_10,v1,Python,Improper use of assert for security checks,"def check_admin(user):
+    assert user.is_admin",vulnerable
+task_py_10,v2,Python,Improper use of assert for security checks,"def check_admin(user):
+    if not user.is_admin:
+        raise PermissionError()",non-vulnerable
+task_py_11,v1,Python,Reading system files without check,"def read_sys_file():
+    with open('/etc/passwd') as f:
+        return f.read()",vulnerable
+task_py_11,v2,Python,Reading system files without check,"import os
+
+def read_sys_file():
+    if os.path.exists('/etc/passwd'):
+        with open('/etc/passwd') as f:
+            return f.read()",non-vulnerable
+task_py_12,v1,Python,Use of insecure hashing algorithm,"import hashlib
+
+def hash_pwd(pwd):
+    return hashlib.md5(pwd.encode()).hexdigest()",vulnerable
+task_py_12,v2,Python,Use of insecure hashing algorithm,"import hashlib
+
+def hash_pwd(pwd):
+    return hashlib.sha256(pwd.encode()).hexdigest()",non-vulnerable
+task_py_13,v1,Python,Exposure of internal IP in response,"def get_ip():
+    return 'Internal IP: 192.168.1.1'",vulnerable
+task_py_13,v2,Python,Exposure of internal IP in response,"def get_ip():
+    return 'Internal IP: [REDACTED]'",non-vulnerable
+task_py_14,v1,Python,Use of wildcard imports,"from math import *
+def compute():
+    return sqrt(16)",vulnerable
+task_py_14,v2,Python,Use of wildcard imports,"import math
+def compute():
+    return math.sqrt(16)",non-vulnerable
+task_py_15,v1,Python,Improper exception handling reveals stack trace,"def parse_int(val):
+    return int(val)",vulnerable
+task_py_15,v2,Python,Improper exception handling reveals stack trace,"def parse_int(val):
+    try:
+        return int(val)
+    except ValueError:
+        return 'Invalid number'",non-vulnerable
+task_py_16,v1,Python,Insecure deserialization of untrusted data - variation 2,"def load_data(data):
+    import pickle
+    return pickle.loads(data)",vulnerable
+task_py_16,v2,Python,Insecure deserialization of untrusted data - variation 2,"import pickle, io
+
+def load_data(data):
+    safe_stream = io.BytesIO(data)
+    return pickle.load(safe_stream)",non-vulnerable
+task_py_17,v1,Python,Use of eval with user input - variation 2,"def evaluate(expr):
+    return eval(expr)",vulnerable
+task_py_17,v2,Python,Use of eval with user input - variation 2,"def evaluate(expr):
+    import ast
+    return ast.literal_eval(expr)",non-vulnerable
+task_py_18,v1,Python,Missing input validation before writing to file - variation 2,"def save_content(filename, content):
+    with open(filename, 'w') as f:
+        f.write(content)",vulnerable
+task_py_18,v2,Python,Missing input validation before writing to file - variation 2,"import os
+
+def save_content(filename, content):
+    if not filename.startswith('/'):
+        with open(filename, 'w') as f:
+            f.write(content)",non-vulnerable
+task_py_19,v1,Python,Logging sensitive information - variation 2,"def login(user, pwd):
+    print(f'User: {user}, Password: {pwd}')",vulnerable
+task_py_19,v2,Python,Logging sensitive information - variation 2,"def login(user, pwd):
+    print(f'User: {user}, Password: [REDACTED]')",non-vulnerable
+task_py_20,v1,Python,Command injection via os.system - variation 2,"def run(user_input):
+    import os
+    os.system(user_input)",vulnerable
+task_py_20,v2,Python,Command injection via os.system - variation 2,"import subprocess
+
+def run(user_input):
+    subprocess.run(['echo', user_input])",non-vulnerable
+task_py_21,v1,Python,Exposure of debug mode in Flask app - variation 2,"from flask import Flask
+app = Flask(__name__)
+app.run(debug=True)",vulnerable
+task_py_21,v2,Python,Exposure of debug mode in Flask app - variation 2,"from flask import Flask
+app = Flask(__name__)
+app.run(debug=False)",non-vulnerable
+task_py_22,v1,Python,SQL Injection vulnerability using string formatting - variation 2,"def get_user_data(user):
+    query = f""SELECT * FROM users WHERE name = '{user}'""
+    return query",vulnerable
+task_py_22,v2,Python,SQL Injection vulnerability using string formatting - variation 2,"def get_user_data(user):
+    import sqlite3
+    query = ""SELECT * FROM users WHERE name = ?""
+    return query, (user,)",non-vulnerable
+task_py_23,v1,Python,Exposing stack trace to users - variation 2,"def divide(a, b):
+    return a / b",vulnerable
+task_py_23,v2,Python,Exposing stack trace to users - variation 2,"def divide(a, b):
+    try:
+        return a / b
+    except ZeroDivisionError:
+        return 'Invalid operation'",non-vulnerable
+task_py_24,v1,Python,Hardcoded cryptographic key - variation 2,"def encrypt(data):
+    key = 'hardcodedkey123'
+    return f'{data}-{key}'",vulnerable
+task_py_24,v2,Python,Hardcoded cryptographic key - variation 2,"import os
+
+def encrypt(data):
+    key = os.getenv('ENCRYPTION_KEY')
+    return f'{data}-{key}'",non-vulnerable
+task_py_25,v1,Python,Improper use of assert for security checks - variation 2,"def check_admin(user):
+    assert user.is_admin",vulnerable
+task_py_25,v2,Python,Improper use of assert for security checks - variation 2,"def check_admin(user):
+    if not user.is_admin:
+        raise PermissionError()",non-vulnerable
+task_py_26,v1,Python,Reading system files without check - variation 2,"def read_sys_file():
+    with open('/etc/passwd') as f:
+        return f.read()",vulnerable
+task_py_26,v2,Python,Reading system files without check - variation 2,"import os
+
+def read_sys_file():
+    if os.path.exists('/etc/passwd'):
+        with open('/etc/passwd') as f:
+            return f.read()",non-vulnerable
+task_py_27,v1,Python,Use of insecure hashing algorithm - variation 2,"import hashlib
+
+def hash_pwd(pwd):
+    return hashlib.md5(pwd.encode()).hexdigest()",vulnerable
+task_py_27,v2,Python,Use of insecure hashing algorithm - variation 2,"import hashlib
+
+def hash_pwd(pwd):
+    return hashlib.sha256(pwd.encode()).hexdigest()",non-vulnerable
+task_py_28,v1,Python,Exposure of internal IP in response - variation 2,"def get_ip():
+    return 'Internal IP: 192.168.1.1'",vulnerable
+task_py_28,v2,Python,Exposure of internal IP in response - variation 2,"def get_ip():
+    return 'Internal IP: [REDACTED]'",non-vulnerable
+task_py_29,v1,Python,Use of wildcard imports - variation 2,"from math import *
+def compute():
+    return sqrt(16)",vulnerable
+task_py_29,v2,Python,Use of wildcard imports - variation 2,"import math
+def compute():
+    return math.sqrt(16)",non-vulnerable
+task_py_30,v1,Python,Improper exception handling reveals stack trace - variation 2,"def parse_int(val):
+    return int(val)",vulnerable
+task_py_30,v2,Python,Improper exception handling reveals stack trace - variation 2,"def parse_int(val):
+    try:
+        return int(val)
+    except ValueError:
+        return 'Invalid number'",non-vulnerable

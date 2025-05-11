@@ -1,0 +1,208 @@
+task_id,variant,language,description,code,label
+task_rust_smell_1,v1,Rust,Long Function,"fn process() {
+    let a = 10;
+    let b = 20;
+    let c = a + b;
+    // many lines...
+    println!(""{}"", c);
+}",smelly
+task_rust_smell_1,v2,Rust,Long Function,"fn add(a: i32, b: i32) -> i32 {
+    a + b
+}
+fn process() {
+    let c = add(10, 20);
+    println!(""{}"", c);
+}",clean
+task_rust_smell_2,v1,Rust,Duplicate Code,"fn draw_circle() {
+    let x = 10;
+    let y = 20;
+    println!(""Circle at {},{}"", x, y);
+}
+fn draw_square() {
+    let x = 10;
+    let y = 20;
+    println!(""Square at {},{}"", x, y);
+}",smelly
+task_rust_smell_2,v2,Rust,Duplicate Code,"fn draw_shape(shape: &str, x: i32, y: i32) {
+    println!(""{} at {},{}"", shape, x, y);
+}
+fn draw_circle() { draw_shape(""Circle"", 10, 20); }
+fn draw_square() { draw_shape(""Square"", 10, 20); }",clean
+task_rust_smell_3,v1,Rust,Magic Numbers,let area = 3.14 * r * r;,smelly
+task_rust_smell_3,v2,Rust,Magic Numbers,"const PI: f64 = 3.14;
+let area = PI * r * r;",clean
+task_rust_smell_4,v1,Rust,Too Many Parameters,"fn create_user(name: String, age: u8, email: String, phone: String, address: String) {}",smelly
+task_rust_smell_4,v2,Rust,Too Many Parameters,"struct User {
+    name: String,
+    age: u8,
+    email: String,
+    phone: String,
+    address: String,
+}
+fn create_user(user: User) {}",clean
+task_rust_smell_5,v1,Rust,Global State,"static mut COUNTER: i32 = 0;
+unsafe fn increment() { COUNTER += 1; }",smelly
+task_rust_smell_5,v2,Rust,Global State,fn increment(counter: &mut i32) { *counter += 1; },clean
+task_rust_smell_6,v1,Rust,Dead Code,"fn run() {
+    return;
+    println!(""Unreachable"");
+}",smelly
+task_rust_smell_6,v2,Rust,Dead Code,"fn run() {
+    return;
+}",clean
+task_rust_smell_7,v1,Rust,Duplicated Logic,"if a > 0 { x = a; } else { x = -a; }
+if a > 0 { y = a; } else { y = -a; }",smelly
+task_rust_smell_7,v2,Rust,Duplicated Logic,"fn abs(n: i32) -> i32 { if n > 0 { n } else { -n } }
+x = abs(a);
+y = abs(a);",clean
+task_rust_smell_8,v1,Rust,Hardcoded Path,"let content = std::fs::read_to_string(""/user/data/file.txt"").unwrap();",smelly
+task_rust_smell_8,v2,Rust,Hardcoded Path,"const FILE_PATH: &str = ""/user/data/file.txt"";
+let content = std::fs::read_to_string(FILE_PATH).unwrap();",clean
+task_rust_smell_9,v1,Rust,Improper Naming,fn DoSomething() {},smelly
+task_rust_smell_9,v2,Rust,Improper Naming,fn do_something() {},clean
+task_rust_smell_10,v1,Rust,Poor Commenting,"fn add(a: i32, b: i32) -> i32 {
+    // stuff
+    a + b
+}",smelly
+task_rust_smell_10,v2,Rust,Poor Commenting,"fn add(a: i32, b: i32) -> i32 {
+    // returns the sum of two integers
+    a + b
+}",clean
+task_rust_smell_11,v1,Rust,Long Function (variation 2),"fn process() {
+    let a = 10;
+    let b = 20;
+    let c = a + b;
+    // many lines...
+    println!(""{}"", c);
+}",smelly
+task_rust_smell_11,v2,Rust,Long Function (variation 2),"fn add(a: i32, b: i32) -> i32 {
+    a + b
+}
+fn process() {
+    let c = add(10, 20);
+    println!(""{}"", c);
+}",clean
+task_rust_smell_12,v1,Rust,Duplicate Code (variation 2),"fn draw_circle() {
+    let x = 10;
+    let y = 20;
+    println!(""Circle at {},{}"", x, y);
+}
+fn draw_square() {
+    let x = 10;
+    let y = 20;
+    println!(""Square at {},{}"", x, y);
+}",smelly
+task_rust_smell_12,v2,Rust,Duplicate Code (variation 2),"fn draw_shape(shape: &str, x: i32, y: i32) {
+    println!(""{} at {},{}"", shape, x, y);
+}
+fn draw_circle() { draw_shape(""Circle"", 10, 20); }
+fn draw_square() { draw_shape(""Square"", 10, 20); }",clean
+task_rust_smell_13,v1,Rust,Magic Numbers (variation 2),let area = 3.14 * r * r;,smelly
+task_rust_smell_13,v2,Rust,Magic Numbers (variation 2),"const PI: f64 = 3.14;
+let area = PI * r * r;",clean
+task_rust_smell_14,v1,Rust,Too Many Parameters (variation 2),"fn create_user(name: String, age: u8, email: String, phone: String, address: String) {}",smelly
+task_rust_smell_14,v2,Rust,Too Many Parameters (variation 2),"struct User {
+    name: String,
+    age: u8,
+    email: String,
+    phone: String,
+    address: String,
+}
+fn create_user(user: User) {}",clean
+task_rust_smell_15,v1,Rust,Global State (variation 2),"static mut COUNTER: i32 = 0;
+unsafe fn increment() { COUNTER += 1; }",smelly
+task_rust_smell_15,v2,Rust,Global State (variation 2),fn increment(counter: &mut i32) { *counter += 1; },clean
+task_rust_smell_16,v1,Rust,Dead Code (variation 2),"fn run() {
+    return;
+    println!(""Unreachable"");
+}",smelly
+task_rust_smell_16,v2,Rust,Dead Code (variation 2),"fn run() {
+    return;
+}",clean
+task_rust_smell_17,v1,Rust,Duplicated Logic (variation 2),"if a > 0 { x = a; } else { x = -a; }
+if a > 0 { y = a; } else { y = -a; }",smelly
+task_rust_smell_17,v2,Rust,Duplicated Logic (variation 2),"fn abs(n: i32) -> i32 { if n > 0 { n } else { -n } }
+x = abs(a);
+y = abs(a);",clean
+task_rust_smell_18,v1,Rust,Hardcoded Path (variation 2),"let content = std::fs::read_to_string(""/user/data/file.txt"").unwrap();",smelly
+task_rust_smell_18,v2,Rust,Hardcoded Path (variation 2),"const FILE_PATH: &str = ""/user/data/file.txt"";
+let content = std::fs::read_to_string(FILE_PATH).unwrap();",clean
+task_rust_smell_19,v1,Rust,Improper Naming (variation 2),fn DoSomething() {},smelly
+task_rust_smell_19,v2,Rust,Improper Naming (variation 2),fn do_something() {},clean
+task_rust_smell_20,v1,Rust,Poor Commenting (variation 2),"fn add(a: i32, b: i32) -> i32 {
+    // stuff
+    a + b
+}",smelly
+task_rust_smell_20,v2,Rust,Poor Commenting (variation 2),"fn add(a: i32, b: i32) -> i32 {
+    // returns the sum of two integers
+    a + b
+}",clean
+task_rust_smell_21,v1,Rust,Long Function (variation 3),"fn process() {
+    let a = 10;
+    let b = 20;
+    let c = a + b;
+    // many lines...
+    println!(""{}"", c);
+}",smelly
+task_rust_smell_21,v2,Rust,Long Function (variation 3),"fn add(a: i32, b: i32) -> i32 {
+    a + b
+}
+fn process() {
+    let c = add(10, 20);
+    println!(""{}"", c);
+}",clean
+task_rust_smell_22,v1,Rust,Duplicate Code (variation 3),"fn draw_circle() {
+    let x = 10;
+    let y = 20;
+    println!(""Circle at {},{}"", x, y);
+}
+fn draw_square() {
+    let x = 10;
+    let y = 20;
+    println!(""Square at {},{}"", x, y);
+}",smelly
+task_rust_smell_22,v2,Rust,Duplicate Code (variation 3),"fn draw_shape(shape: &str, x: i32, y: i32) {
+    println!(""{} at {},{}"", shape, x, y);
+}
+fn draw_circle() { draw_shape(""Circle"", 10, 20); }
+fn draw_square() { draw_shape(""Square"", 10, 20); }",clean
+task_rust_smell_23,v1,Rust,Magic Numbers (variation 3),let area = 3.14 * r * r;,smelly
+task_rust_smell_23,v2,Rust,Magic Numbers (variation 3),"const PI: f64 = 3.14;
+let area = PI * r * r;",clean
+task_rust_smell_24,v1,Rust,Too Many Parameters (variation 3),"fn create_user(name: String, age: u8, email: String, phone: String, address: String) {}",smelly
+task_rust_smell_24,v2,Rust,Too Many Parameters (variation 3),"struct User {
+    name: String,
+    age: u8,
+    email: String,
+    phone: String,
+    address: String,
+}
+fn create_user(user: User) {}",clean
+task_rust_smell_25,v1,Rust,Global State (variation 3),"static mut COUNTER: i32 = 0;
+unsafe fn increment() { COUNTER += 1; }",smelly
+task_rust_smell_25,v2,Rust,Global State (variation 3),fn increment(counter: &mut i32) { *counter += 1; },clean
+task_rust_smell_26,v1,Rust,Dead Code (variation 3),"fn run() {
+    return;
+    println!(""Unreachable"");
+}",smelly
+task_rust_smell_26,v2,Rust,Dead Code (variation 3),"fn run() {
+    return;
+}",clean
+task_rust_smell_27,v1,Rust,Duplicated Logic (variation 3),"if a > 0 { x = a; } else { x = -a; }
+if a > 0 { y = a; } else { y = -a; }",smelly
+task_rust_smell_27,v2,Rust,Duplicated Logic (variation 3),"fn abs(n: i32) -> i32 { if n > 0 { n } else { -n } }
+x = abs(a);
+y = abs(a);",clean
+task_rust_smell_28,v1,Rust,Hardcoded Path (variation 3),"let content = std::fs::read_to_string(""/user/data/file.txt"").unwrap();",smelly
+task_rust_smell_28,v2,Rust,Hardcoded Path (variation 3),"const FILE_PATH: &str = ""/user/data/file.txt"";
+let content = std::fs::read_to_string(FILE_PATH).unwrap();",clean
+task_rust_smell_29,v1,Rust,Improper Naming (variation 3),fn DoSomething() {},smelly
+task_rust_smell_29,v2,Rust,Improper Naming (variation 3),fn do_something() {},clean
+task_rust_smell_30,v1,Rust,Poor Commenting (variation 3),"fn add(a: i32, b: i32) -> i32 {
+    // stuff
+    a + b
+}",smelly
+task_rust_smell_30,v2,Rust,Poor Commenting (variation 3),"fn add(a: i32, b: i32) -> i32 {
+    // returns the sum of two integers
+    a + b
+}",clean
