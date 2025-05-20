@@ -5,7 +5,7 @@ CodeVul+ is a deep learning framework for code vulnerability detection at functi
 # Technical presentation of our approach. <br>
 
 
-- 📂 [Dataset Folder on Google Drive](https://drive.google.com/drive/folders/1LC9L8bfwItw_pFA6e_8eWtn-UYvH8pq4?usp=sharing)
+- 📂 [Presentation](https://drive.google.com/drive/folders/1LC9L8bfwItw_pFA6e_8eWtn-UYvH8pq4?usp=sharing)
 
 
 
